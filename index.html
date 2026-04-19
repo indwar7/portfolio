@@ -9,7 +9,6 @@
 </head>
 <body>
 
-    <!-- PROGRESS BAR -->
     <div class="progress-bar" id="progressBar"></div>
 
     <!-- NAV -->
@@ -17,16 +16,15 @@
         <div class="nav-name">Abhaydeep Indwar</div>
         <nav class="nav-links" id="navLinks">
             <a href="#about">About</a>
-            <a href="#writing">Writing</a>
-            <a href="#projects">Projects</a>
+            <a href="#work">Work</a>
             <a href="#achievements">Achievements</a>
             <a href="#contact">Contact</a>
         </nav>
         <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
+    <!-- ░░ HERO — BLACK ░░ -->
+    <section id="home" class="hero dark">
         <div class="hero-inner">
             <p class="hero-kicker">Mobile Developer · Flutter · React Native · Go</p>
             <h1 class="hero-title">I build things.<br>Then I explain<br><em>them clearly.</em></h1>
@@ -36,296 +34,265 @@
                 <span class="hl-dim">B.Tech CSE (Data Science) · AKGEC · 8.0 CGPA</span>
             </p>
             <div class="hero-stack">
-                <span>Flutter</span>
-                <span>React Native</span>
-                <span>Go</span>
-                <span>Firebase</span>
-                <span>PostgreSQL</span>
-                <span>Redis</span>
-                <span>Docker</span>
-                <span>TFLite</span>
+                <span>Flutter</span><span>React Native</span><span>Go</span>
+                <span>Firebase</span><span>PostgreSQL</span><span>Redis</span>
+                <span>Docker</span><span>TFLite</span>
             </div>
             <div class="hero-cta">
-                <a href="#projects" class="btn-primary">View Projects</a>
-                <a href="#writing" class="btn-ghost">Read My Writing</a>
+                <a href="#work" class="btn-primary-dark">View My Work</a>
+                <a href="#contact" class="btn-ghost-dark">Get In Touch</a>
             </div>
         </div>
         <div class="hero-rule"></div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section about">
-        <div class="section-num">01</div>
+    <!-- ░░ ABOUT — WHITE ░░ -->
+    <section id="about" class="section light">
+        <div class="section-num light-num">01</div>
         <div class="section-grid">
-            <div class="section-label">About</div>
+            <div class="section-label-light">About</div>
             <div class="section-body">
                 <p class="about-lead">I'm a Computer Science student at AKGEC specialising in Data Science, currently working as an SDE Intern at Unfluke — building production mobile apps with React Native.</p>
                 <p>I won Smart India Hackathon 2025 leading a team of five — shipping a GPS platform for India's Ministry of Road Transport across 50+ cities, 2K+ users, 50K+ daily trips. I build across the full stack: Flutter frontends, Go backends, PostgreSQL + Redis, Docker deployments, and on-device ML with TFLite.</p>
                 <p>My engineering background is my edge as a writer. I don't write about systems I've read about — I write about systems I've built, debugged, and shipped. That's the difference between technical content that's accurate and technical content that's useful.</p>
                 <div class="about-facts">
-                    <div class="fact"><span class="fact-n">8.0</span><span class="fact-l">CGPA @ AKGEC</span></div>
-                    <div class="fact"><span class="fact-n">SIH</span><span class="fact-l">2025 National Winner</span></div>
-                    <div class="fact"><span class="fact-n">2+</span><span class="fact-l">Play Store Apps</span></div>
-                    <div class="fact"><span class="fact-n">IBM</span><span class="fact-l">Certified</span></div>
+                    <div class="fact"><span class="fact-n dark-n">8.0</span><span class="fact-l dark-l">CGPA @ AKGEC</span></div>
+                    <div class="fact"><span class="fact-n dark-n">SIH</span><span class="fact-l dark-l">2025 National Winner</span></div>
+                    <div class="fact"><span class="fact-n dark-n">2+</span><span class="fact-l dark-l">Play Store Apps</span></div>
+                    <div class="fact"><span class="fact-n dark-n">IBM</span><span class="fact-l dark-l">Certified</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <hr class="divider">
-
-    <!-- WRITING -->
-    <section id="writing" class="section writing">
+    <!-- ░░ WORK — BLACK (two columns) ░░ -->
+    <section id="work" class="section dark work-section">
         <div class="section-num">02</div>
-        <div class="section-grid">
-            <div class="section-label">Writing</div>
-            <div class="section-body">
-                <p class="section-intro">Technical articles built from real engineering — no fake content, no padding. Every piece is grounded in a system I actually built.</p>
+        <div class="work-header">
+            <div class="work-col-head">
+                <span class="work-tag">What I Built</span>
+                <h2>Projects</h2>
+            </div>
+            <div class="work-divider-v"></div>
+            <div class="work-col-head">
+                <span class="work-tag">What I Explain</span>
+                <h2>Writing</h2>
+            </div>
+        </div>
 
-                <div class="articles">
+        <div class="work-grid">
 
-                    <article class="article featured">
-                        <div class="article-meta">
-                            <span class="article-tag">Mobile Systems</span>
-                            <span class="article-read">5 min read</span>
+            <!-- LEFT: PROJECTS -->
+            <div class="work-col">
+
+                <div class="proj-card dark-card">
+                    <div class="proj-card-top">
+                        <div>
+                            <span class="proj-year">2025</span>
+                            <h3 class="proj-name">TrackMatee</h3>
                         </div>
-                        <h2 class="article-title"><a href="articles/offline-first-apps.html">How Offline-First Apps Save Battery and Improve Reliability</a></h2>
-                        <p class="article-excerpt">Most apps fail silently when the network drops. Building TrackMatee for 50+ Indian cities taught me that offline-first isn't a feature — it's a foundation. SQLite caching, adaptive GPS sampling, and 99.9% data integrity across 50K+ daily trips.</p>
-                        <a href="articles/offline-first-apps.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Performance Engineering</span>
-                            <span class="article-read">4 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/battery-drain.html">Why Your App Is Draining Battery — And How to Fix It</a></h2>
-                        <p class="article-excerpt">GPS is the biggest battery killer in mobile apps. The adaptive sampling strategy we used in TrackMatee to cut battery consumption by 35% without losing accuracy.</p>
-                        <a href="articles/battery-drain.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Systems Design</span>
-                            <span class="article-read">5 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/websockets-vs-rest.html">WebSockets vs REST: What We Learned Building a Live Trading App</a></h2>
-                        <p class="article-excerpt">Peanut Trading App needed real-time price feeds for 500+ concurrent users. When WebSockets beat REST, how we managed connection state, and what broke first under load.</p>
-                        <a href="articles/websockets-vs-rest.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Backend Engineering</span>
-                            <span class="article-read">5 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/redis-leaderboards.html">How Redis Powers Real-Time Leaderboards</a></h2>
-                        <p class="article-excerpt">A SQL query that sorts millions of users is slow. Redis Sorted Sets do the same thing in O(log N). How we used this in SafaiPay — and why every competitive feature should use this pattern.</p>
-                        <a href="articles/redis-leaderboards.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Backend Engineering</span>
-                            <span class="article-read">6 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/jwt-authentication.html">Understanding JWT Authentication</a></h2>
-                        <p class="article-excerpt">How JSON Web Tokens work, why they're stateless, and how we used them in SafaiPay to build a secure, scalable auth system — explained from first principles.</p>
-                        <a href="articles/jwt-authentication.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Product & UX</span>
-                            <span class="article-read">5 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/points-economy.html">Building a Points Economy: How Gamification Drives Real Civic Behaviour</a></h2>
-                        <p class="article-excerpt">SafaiPay rewards users for reporting garbage. How atomic transactions, Redis leaderboards, and badge psychology were designed to make civic participation feel worth doing.</p>
-                        <a href="articles/points-economy.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">AI & Machine Learning</span>
-                            <span class="article-read">6 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/on-device-ml.html">On-Device ML: Running AI Without the Cloud</a></h2>
-                        <p class="article-excerpt">Lucy AR runs garment try-on inference directly on your phone — no server, no latency. How TFLite quantisation, GPU delegation, and adaptive smoothing deliver 15–30 FPS on-device AI.</p>
-                        <a href="articles/on-device-ml.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Computer Vision</span>
-                            <span class="article-read">5 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/body-landmarks.html">How We Track 33 Body Landmarks in Real Time on a Phone</a></h2>
-                        <p class="article-excerpt">A beginner-friendly breakdown of how ML Kit and TFLite work together to detect body pose, handle jitter with velocity-adaptive smoothing, and render garments that move naturally.</p>
-                        <a href="articles/body-landmarks.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Mobile Systems</span>
-                            <span class="article-read">4 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/trading-app-offline.html">How to Keep a Trading App Alive When the Network Dies</a></h2>
-                        <p class="article-excerpt">Offline caching in a live trading context is tricky — stale prices are dangerous. How SQLite caching, error boundaries, and idempotency keys kept Peanut crash-free across 2,000+ daily transactions.</p>
-                        <a href="articles/trading-app-offline.html" class="article-cta">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Backend Engineering</span>
-                            <span class="article-read">5 min read</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/otp-to-payout.html">From OTP to Payout: How We Built Auth and Wallets in SafaiPay</a></h2>
-                        <p class="article-excerpt">A walkthrough of the full auth-to-withdrawal flow — Firebase OTP, JWT sessions, RazorpayX UPI payouts — explained for developers building their first fintech feature.</p>
-                        <a href="articles/otp-to-payout.html" class="article-cta">Read Article →</a>
-                    </article>
-
+                        <span class="proj-badge">🏆 SIH Winner</span>
+                    </div>
+                    <p class="proj-desc">National GPS mobility platform for MoRTH. 50+ cities, 2K+ users, 50K+ daily trips. Offline-first architecture, adaptive GPS, zero downtime.</p>
+                    <div class="proj-meta-row">
+                        <span class="proj-stack">Flutter · Firebase · Maps · SQLite</span>
+                        <a href="articles/offline-first-apps.html" class="proj-view">Case Study →</a>
+                    </div>
+                    <div class="proj-impact">
+                        <span>2K+ users</span><span>40% accuracy ↑</span><span>35% battery ↓</span>
+                    </div>
                 </div>
+
+                <div class="proj-card dark-card">
+                    <div class="proj-card-top">
+                        <div>
+                            <span class="proj-year">2026</span>
+                            <h3 class="proj-name">Lucy — AR Try-On</h3>
+                        </div>
+                        <span class="proj-badge">AI · AR</span>
+                    </div>
+                    <p class="proj-desc">Real-time AR garment try-on. On-device ML, 33 body landmarks, 15–30 FPS. IDM-VTON diffusion models. No server, no latency.</p>
+                    <div class="proj-meta-row">
+                        <span class="proj-stack">Flutter · TFLite · Camera2 · ARKit</span>
+                        <a href="articles/on-device-ml.html" class="proj-view">Case Study →</a>
+                    </div>
+                    <div class="proj-impact">
+                        <span>15–30 FPS</span><span>33 landmarks</span><span>On-device</span>
+                    </div>
+                </div>
+
+                <div class="proj-card dark-card">
+                    <div class="proj-card-top">
+                        <div>
+                            <span class="proj-year">2026</span>
+                            <h3 class="proj-name">SafaiPay</h3>
+                        </div>
+                        <span class="proj-badge">Full-Stack</span>
+                    </div>
+                    <p class="proj-desc">Waste management & rewards. Go backend, 28 endpoints, Redis leaderboards, Firebase OTP + JWT, RazorpayX UPI payouts. Docker on Railway.</p>
+                    <div class="proj-meta-row">
+                        <span class="proj-stack">Flutter · Go · PostgreSQL · Redis</span>
+                        <a href="articles/redis-leaderboards.html" class="proj-view">Case Study →</a>
+                    </div>
+                    <div class="proj-impact">
+                        <span>28 endpoints</span><span>15 badges</span><span>UPI payouts</span>
+                    </div>
+                </div>
+
+                <div class="proj-card dark-card">
+                    <div class="proj-card-top">
+                        <div>
+                            <span class="proj-year">2025</span>
+                            <h3 class="proj-name">Peanut Trading App</h3>
+                        </div>
+                        <span class="proj-badge">FinTech</span>
+                    </div>
+                    <p class="proj-desc">Live commodity trading. WebSocket price feeds, Firebase orders, SQLite offline cache. 500+ concurrent users, 2K+ daily transactions.</p>
+                    <div class="proj-meta-row">
+                        <span class="proj-stack">Flutter · WebSocket · Firebase</span>
+                        <a href="articles/websockets-vs-rest.html" class="proj-view">Case Study →</a>
+                    </div>
+                    <div class="proj-impact">
+                        <span>500+ concurrent</span><span>2K+ daily txns</span><span>40% faster</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="work-divider-v-full"></div>
+
+            <!-- RIGHT: WRITING -->
+            <div class="work-col">
+
+                <article class="art-item featured-art">
+                    <div class="art-meta">
+                        <span class="art-tag">Mobile Systems</span>
+                        <span class="art-time">5 min</span>
+                    </div>
+                    <h3><a href="articles/offline-first-apps.html">How Offline-First Apps Save Battery and Improve Reliability</a></h3>
+                    <p>SQLite caching, adaptive GPS, and 99.9% data integrity across 50K+ daily trips — from building TrackMatee.</p>
+                    <a href="articles/offline-first-apps.html" class="art-cta">Read →</a>
+                </article>
+
+                <article class="art-item">
+                    <div class="art-meta">
+                        <span class="art-tag">Performance</span>
+                        <span class="art-time">4 min</span>
+                    </div>
+                    <h3><a href="articles/battery-drain.html">Why Your App Is Draining Battery — And How to Fix It</a></h3>
+                    <p>Adaptive GPS sampling strategy that cut battery consumption by 35% without losing accuracy.</p>
+                    <a href="articles/battery-drain.html" class="art-cta">Read →</a>
+                </article>
+
+                <article class="art-item">
+                    <div class="art-meta">
+                        <span class="art-tag">Systems Design</span>
+                        <span class="art-time">5 min</span>
+                    </div>
+                    <h3><a href="articles/websockets-vs-rest.html">WebSockets vs REST: What We Learned Building a Live Trading App</a></h3>
+                    <p>When WebSockets beat REST, connection state management, and what broke first under 500+ concurrent users.</p>
+                    <a href="articles/websockets-vs-rest.html" class="art-cta">Read →</a>
+                </article>
+
+                <article class="art-item">
+                    <div class="art-meta">
+                        <span class="art-tag">Backend</span>
+                        <span class="art-time">5 min</span>
+                    </div>
+                    <h3><a href="articles/redis-leaderboards.html">How Redis Powers Real-Time Leaderboards</a></h3>
+                    <p>Redis Sorted Sets do in O(log N) what SQL can't at scale. How we used this in SafaiPay.</p>
+                    <a href="articles/redis-leaderboards.html" class="art-cta">Read →</a>
+                </article>
+
+                <article class="art-item">
+                    <div class="art-meta">
+                        <span class="art-tag">Backend</span>
+                        <span class="art-time">6 min</span>
+                    </div>
+                    <h3><a href="articles/jwt-authentication.html">Understanding JWT Authentication</a></h3>
+                    <p>How JWTs work, why they're stateless, and the revocation problem — explained from first principles.</p>
+                    <a href="articles/jwt-authentication.html" class="art-cta">Read →</a>
+                </article>
+
+                <article class="art-item">
+                    <div class="art-meta">
+                        <span class="art-tag">AI & ML</span>
+                        <span class="art-time">6 min</span>
+                    </div>
+                    <h3><a href="articles/on-device-ml.html">On-Device ML: Running AI Without the Cloud</a></h3>
+                    <p>TFLite quantisation, GPU delegation, and adaptive smoothing for 15–30 FPS on-device inference.</p>
+                    <a href="articles/on-device-ml.html" class="art-cta">Read →</a>
+                </article>
+
+                <article class="art-item">
+                    <div class="art-meta">
+                        <span class="art-tag">Computer Vision</span>
+                        <span class="art-time">5 min</span>
+                    </div>
+                    <h3><a href="articles/body-landmarks.html">How We Track 33 Body Landmarks in Real Time on a Phone</a></h3>
+                    <p>ML Kit, TFLite, velocity-adaptive smoothing, and body segmentation for realistic AR occlusion.</p>
+                    <a href="articles/body-landmarks.html" class="art-cta">Read →</a>
+                </article>
+
+                <article class="art-item">
+                    <div class="art-meta">
+                        <span class="art-tag">Product & UX</span>
+                        <span class="art-time">5 min</span>
+                    </div>
+                    <h3><a href="articles/points-economy.html">Building a Points Economy: How Gamification Drives Civic Behaviour</a></h3>
+                    <p>Atomic transactions, Redis leaderboards, and badge psychology that made SafaiPay's rewards work.</p>
+                    <a href="articles/points-economy.html" class="art-cta">Read →</a>
+                </article>
+
             </div>
         </div>
     </section>
 
-    <hr class="divider">
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section projects">
-        <div class="section-num">03</div>
+    <!-- ░░ ACHIEVEMENTS — WHITE ░░ -->
+    <section id="achievements" class="section light">
+        <div class="section-num light-num">03</div>
         <div class="section-grid">
-            <div class="section-label">Projects</div>
+            <div class="section-label-light">Achievements</div>
             <div class="section-body">
-                <p class="section-intro">Production systems — built, shipped, and running.</p>
-                <div class="proj-list">
-
-                    <div class="proj-card">
-                        <div class="proj-card-top">
-                            <div>
-                                <span class="proj-year">2025</span>
-                                <h3 class="proj-name">TrackMatee</h3>
-                            </div>
-                            <span class="proj-badge">🏆 SIH 2025 Winner</span>
-                        </div>
-                        <p class="proj-desc">National GPS mobility analytics platform for India's Ministry of Road Transport. Led a 5-person team. Offline-first architecture, adaptive GPS sampling, processing 50,000+ daily trips across 50+ cities with zero downtime.</p>
-                        <div class="proj-meta-row">
-                            <span class="proj-stack">Flutter · Firebase · Google Maps · SQLite</span>
-                            <a href="articles/offline-first-apps.html" class="proj-view">View Case Study →</a>
-                        </div>
-                        <div class="proj-impact">
-                            <span>2K+ users</span>
-                            <span>50K+ daily trips</span>
-                            <span>40% accuracy ↑</span>
-                            <span>35% battery ↓</span>
-                        </div>
-                    </div>
-
-                    <div class="proj-card">
-                        <div class="proj-card-top">
-                            <div>
-                                <span class="proj-year">2026</span>
-                                <h3 class="proj-name">Lucy — AR Try-On</h3>
-                            </div>
-                            <span class="proj-badge">AI · AR</span>
-                        </div>
-                        <p class="proj-desc">Real-time AR garment try-on with on-device ML inference tracking 33 body landmarks at 15–30 FPS. GPU-accelerated pipeline, velocity-adaptive smoothing, IDM-VTON diffusion models. No server, no latency.</p>
-                        <div class="proj-meta-row">
-                            <span class="proj-stack">Flutter · TFLite · Camera2 · ARKit · Python</span>
-                            <a href="articles/on-device-ml.html" class="proj-view">View Case Study →</a>
-                        </div>
-                        <div class="proj-impact">
-                            <span>15–30 FPS on-device</span>
-                            <span>33 landmarks</span>
-                            <span>Zero server latency</span>
-                        </div>
-                    </div>
-
-                    <div class="proj-card">
-                        <div class="proj-card-top">
-                            <div>
-                                <span class="proj-year">2026</span>
-                                <h3 class="proj-name">SafaiPay</h3>
-                            </div>
-                            <span class="proj-badge">Full-Stack</span>
-                        </div>
-                        <p class="proj-desc">End-to-end waste management and rewards platform. Go backend with 28 REST endpoints, Redis O(log N) leaderboards, Firebase OTP + JWT auth, gamified badge system, and RazorpayX UPI wallet payouts. Deployed via Docker on Railway.</p>
-                        <div class="proj-meta-row">
-                            <span class="proj-stack">Flutter · Go · PostgreSQL · Redis · Docker</span>
-                            <a href="articles/redis-leaderboards.html" class="proj-view">View Case Study →</a>
-                        </div>
-                        <div class="proj-impact">
-                            <span>28 endpoints</span>
-                            <span>15 badges</span>
-                            <span>UPI payouts</span>
-                        </div>
-                    </div>
-
-                    <div class="proj-card">
-                        <div class="proj-card-top">
-                            <div>
-                                <span class="proj-year">2025</span>
-                                <h3 class="proj-name">Peanut Trading App</h3>
-                            </div>
-                            <span class="proj-badge">FinTech</span>
-                        </div>
-                        <p class="proj-desc">Live commodity trading platform with WebSocket-driven real-time price feeds and Firebase order management. Optimised Firestore indexing for 40% faster processing. SQLite offline caching for crash-free operation.</p>
-                        <div class="proj-meta-row">
-                            <span class="proj-stack">Flutter · WebSocket · Firebase · SQLite</span>
-                            <a href="articles/websockets-vs-rest.html" class="proj-view">View Case Study →</a>
-                        </div>
-                        <div class="proj-impact">
-                            <span>500+ concurrent users</span>
-                            <span>2K+ daily transactions</span>
-                            <span>40% faster processing</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- ACHIEVEMENTS -->
-    <section id="achievements" class="section achievements">
-        <div class="section-num">04</div>
-        <div class="section-grid">
-            <div class="section-label">Achievements</div>
-            <div class="section-body">
-
                 <div class="ach-list">
 
-                    <div class="ach-item">
-                        <span class="ach-year">2025</span>
+                    <div class="ach-item light-ach">
+                        <span class="ach-year dark-year">2025</span>
                         <div class="ach-content">
-                            <h3>Winner — Smart India Hackathon 2025</h3>
-                            <p>Led a team of five to win India's largest national-level hackathon, organised by the Ministry of Education. Built TrackMatee — selected from thousands of submissions across the country. Presented to a national jury and won at the final stage against teams from premier institutions.</p>
+                            <h3 class="dark-h">Winner — Smart India Hackathon 2025</h3>
+                            <p class="dark-p">Led a team of five to win India's largest national hackathon organised by the Ministry of Education. Built TrackMatee — selected from thousands of submissions, won at the national final against teams from premier institutions.</p>
                         </div>
                     </div>
 
-                    <div class="ach-item">
-                        <span class="ach-year">2026</span>
+                    <div class="ach-item light-ach">
+                        <span class="ach-year dark-year">2026</span>
                         <div class="ach-content">
-                            <h3>Published Apps — Google Play Store</h3>
-                            <p>Shipped 2+ production applications on Google Play Store with real users and active traffic. Both apps were built independently — from architecture and backend to UI and deployment — without a team or external infrastructure support.</p>
+                            <h3 class="dark-h">SDE Intern @ Unfluke</h3>
+                            <p class="dark-p">Building and maintaining cross-platform production apps with React Native, serving 100+ DOMs. Integrated RESTful APIs reducing server response time by 30%. Implemented Redux state management improving page load times by 40%.</p>
                         </div>
                     </div>
 
-                    <div class="ach-item">
-                        <span class="ach-year">2025</span>
+                    <div class="ach-item light-ach">
+                        <span class="ach-year dark-year">2026</span>
                         <div class="ach-content">
-                            <h3>IBM Certified — Project Management &amp; Data Science</h3>
-                            <p>Certified by IBM in two disciplines: Project Management Professional (agile delivery, scope, and stakeholder communication) and Data Science Professional (data pipelines, model evaluation, and applied ML workflows).</p>
+                            <h3 class="dark-h">Published Apps — Google Play Store</h3>
+                            <p class="dark-p">Shipped 2+ production applications with real users and active traffic — built independently from architecture and backend through to UI and deployment.</p>
                         </div>
                     </div>
 
-                    <div class="ach-item">
-                        <span class="ach-year">2025</span>
+                    <div class="ach-item light-ach">
+                        <span class="ach-year dark-year">2025</span>
                         <div class="ach-content">
-                            <h3>Virtual Internships — Tata · Goldman Sachs · Accenture</h3>
-                            <p>Completed structured virtual engineering internships with three global firms — covering systems design at Tata Group, financial engineering at Goldman Sachs, and enterprise software practices at Accenture Technology.</p>
+                            <h3 class="dark-h">IBM Certified — Project Management &amp; Data Science</h3>
+                            <p class="dark-p">Certified by IBM in Project Management Professional and Data Science Professional — agile delivery, data pipelines, and applied ML workflows.</p>
+                        </div>
+                    </div>
+
+                    <div class="ach-item light-ach">
+                        <span class="ach-year dark-year">2025</span>
+                        <div class="ach-content">
+                            <h3 class="dark-h">Virtual Internships — Tata · Goldman Sachs · Accenture</h3>
+                            <p class="dark-p">Completed structured virtual engineering internships — systems design at Tata Group, financial engineering at Goldman Sachs, enterprise software at Accenture Technology.</p>
                         </div>
                     </div>
 
@@ -334,36 +301,22 @@
         </div>
     </section>
 
-    <hr class="divider">
-
-    <!-- RESUME / CTA -->
-    <section id="resume" class="section resume">
-        <div class="resume-inner">
-            <p class="resume-tag">Open to internships and technical writing roles.</p>
-            <h2 class="resume-title">Let's build something<br><em>worth explaining.</em></h2>
-            <p class="resume-sub">I'm available for content writing internships, technical documentation roles, and mobile development opportunities. I respond within 24 hours.</p>
-            <div class="resume-actions">
-                <a href="AbhayIndwar_SDE.pdf" download class="btn-primary">Download Resume</a>
-                <a href="mailto:abhayindwar7@gmail.com" class="btn-ghost">Email Me</a>
-            </div>
-            <div class="resume-links">
-                <a href="https://linkedin.com/in/abhayindwar7" target="_blank">LinkedIn ↗</a>
-                <a href="https://github.com/indwar7" target="_blank">GitHub ↗</a>
-                <a href="mailto:abhayindwar7@gmail.com">abhayindwar7@gmail.com</a>
-                <a href="tel:+918279343179">+91-82793-43179</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
+    <!-- ░░ CONTACT — BLACK ░░ -->
+    <section id="contact" class="contact dark">
+        <div class="section-num">04</div>
         <div class="contact-inner">
-            <h2 class="contact-title">Let's work<br><em>together.</em></h2>
-            <p class="contact-sub">Open to content writing internships, technical documentation, and mobile development roles. I respond within 24 hours.</p>
+            <p class="contact-kicker">Open to SDE roles, internships &amp; technical writing</p>
+            <h2 class="contact-title">Let's build something<br><em>worth explaining.</em></h2>
+            <p class="contact-sub">I respond within 24 hours.</p>
+            <div class="resume-actions">
+                <a href="AbhayIndwar_SDE.pdf" download class="btn-primary-dark">Download Resume</a>
+                <a href="mailto:abhayindwar7@gmail.com" class="btn-ghost-dark">Email Me</a>
+            </div>
             <div class="contact-links">
                 <a href="mailto:abhayindwar7@gmail.com">abhayindwar7@gmail.com</a>
-                <a href="https://linkedin.com/in/abhayindwar7" target="_blank">LinkedIn</a>
-                <a href="https://github.com/indwar7" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/abhayindwar7" target="_blank">LinkedIn ↗</a>
+                <a href="https://github.com/indwar7" target="_blank">GitHub ↗</a>
+                <a href="tel:+918279343179">+91-82793-43179</a>
             </div>
         </div>
     </section>
@@ -371,7 +324,7 @@
     <!-- FOOTER -->
     <footer class="footer">
         <span>©2026 Abhaydeep Indwar — Developer &amp; Technical Writer</span>
-        <a href="#" class="footer-top">↑ Top</a>
+        <a href="#home" class="footer-top">↑ Top</a>
     </footer>
 
     <!-- CHARACTER -->
@@ -387,9 +340,7 @@
         <div class="guy-body">
             <div class="guy-arm left"></div>
             <div class="guy-arm right">
-                <div class="guy-phone">
-                    <div class="guy-screen"></div>
-                </div>
+                <div class="guy-phone"><div class="guy-screen"></div></div>
             </div>
         </div>
         <div class="guy-legs">
