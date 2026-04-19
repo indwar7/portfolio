@@ -32,6 +32,19 @@ a { color: inherit; text-decoration: none; }
 em { font-style: italic; }
 
 /* ============================================
+   REVEAL ANIMATIONS
+============================================ */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
    PROGRESS BAR
 ============================================ */
 .progress-bar {
