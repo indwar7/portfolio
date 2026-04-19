@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding JWT Authentication — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">Backend Engineering</span>
+        <span class="article-date">Mar 2026</span>
+        <span class="article-read-time">6 min read</span>
+    </div>
+
+    <h1 class="article-title">Understanding JWT Authentication</h1>
+    <p class="article-subtitle">How JSON Web Tokens work, why they're stateless, and how we used them in SafaiPay to build a secure, scalable auth system — explained from first principles.</p>
+
+    <div class="article-body">
+
+        <p>Every app that has users has an authentication problem: how does the server know that the person making a request is who they claim to be — without asking them to log in on every single request?</p>
+
+        <p>Session cookies solve this with a server-side lookup table. JWTs solve it differently — and in a way that scales better for modern mobile backends.</p>
+
+        <h2>The Session Cookie Problem</h2>
+
+        <p>Traditional session-based auth works like this: after login, the server generates a random session ID, stores it in a database, and sends it to the client as a cookie. On every request, the client sends the cookie back, the server looks it up in the database, and — if found — considers the user authenticated.</p>
+
+        <p>This works, but it has a cost: every authenticated request requires a database read. At scale, your auth database becomes a bottleneck. Worse, if you have multiple servers, they all need access to the same session store — adding infrastructure complexity.</p>
+
+        <h2>How JWTs Work</h2>
+
+        <p>A JWT (JSON Web Token) takes a different approach: instead of storing session state on the server, it encodes it in the token itself — and cryptographically signs it so the server can verify it without a database lookup.</p>
+
+        <p>A JWT has three parts, separated by dots:</p>
+
+        <ul>
+            <li><strong>Header</strong> — the algorithm used for signing (e.g., HS256)</li>
+            <li><strong>Payload</strong> — the claims: user ID, expiry time, any other data you include</li>
+            <li><strong>Signature</strong> — the header + payload, signed with a secret key</li>
+        </ul>
+
+        <p>When the server receives a request, it verifies the signature using the secret key. If the signature is valid and the token hasn't expired, the user is authenticated — no database lookup required.</p>
+
+        <p>The signature is what prevents tampering. If an attacker modifies the payload (say, changing their user ID to someone else's), the signature no longer matches — the server rejects it.</p>
+
+        <h2>What We Put in the Payload</h2>
+
+        <p>In SafaiPay's Go backend, our JWT payload contained:</p>
+
+        <ul>
+            <li><code>user_id</code> — the user's database ID</li>
+            <li><code>phone</code> — the verified phone number</li>
+            <li><code>token_version</code> — an integer for revocation (explained below)</li>
+            <li><code>exp</code> — expiry timestamp (7 days from issuance)</li>
+            <li><code>iat</code> — issued-at timestamp</li>
+        </ul>
+
+        <p>We kept the payload small — only what we needed on every request. Avoid putting sensitive data (passwords, full PII) in the payload; it's Base64-encoded, not encrypted, and can be decoded by anyone with the token.</p>
+
+        <h2>The Revocation Problem</h2>
+
+        <p>JWTs have a well-known weakness: they can't be revoked before expiry. Once issued, a token is valid until its <code>exp</code> claim passes. If a user logs out or you suspect their account is compromised, you can't "cancel" the token — the server will keep accepting it.</p>
+
+        <p>We solved this with a <code>token_version</code> field in PostgreSQL. Every user record has a <code>token_version</code> integer (starts at 1). Every JWT we issue includes the current version in its payload.</p>
+
+        <p>On each request, after verifying the signature, we check the token's version against the database value. If they match, the token is valid. To invalidate all of a user's tokens — on logout or security reset — we increment <code>token_version</code> in the database. Every existing token immediately fails the version check.</p>
+
+        <p>This does require one database read per request — the same cost as session-based auth. But it's a targeted read on a primary key, and it only happens when revocation is needed. Most apps gate this with a Redis cache: cache the version per user ID with a short TTL, and only hit PostgreSQL on a cache miss.</p>
+
+        <h2>Token Refresh</h2>
+
+        <p>Short-lived access tokens (15–60 minutes) minimise the damage if a token is stolen. But forcing users to log in every hour is terrible UX.</p>
+
+        <p>The standard pattern: issue a short-lived access token and a long-lived refresh token. When the access token expires, the client silently exchanges the refresh token for a new access token — no user interaction. If the refresh token is also expired (or revoked), the user is asked to log in again.</p>
+
+        <p>In SafaiPay, we used 7-day access tokens (acceptable for a mobile app where the main risk is device theft, handled by revocation) and skipped the refresh token complexity for the MVP. A production fintech app would use shorter access tokens with refresh.</p>
+
+        <blockquote>JWTs don't eliminate the need for a database in auth — they reduce how often you hit it. That's the real benefit.</blockquote>
+
+        <p>JWT auth is now the default for mobile backends. Understanding how the signature works, why revocation is hard, and how to solve it with a version field will take you further than any auth library tutorial.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Backend & Mobile Developer</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Redis Powers Real-Time Leaderboards — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">Backend Engineering</span>
+        <span class="article-date">Apr 2026</span>
+        <span class="article-read-time">5 min read</span>
+    </div>
+
+    <h1 class="article-title">How Redis Powers Real-Time Leaderboards</h1>
+    <p class="article-subtitle">A database query that sorts millions of users is slow. Redis Sorted Sets do the same thing instantly. Here's how we used them in SafaiPay — and why every competitive feature should use this pattern.</p>
+
+    <div class="article-body">
+
+        <p>Leaderboards are deceptively simple to describe and surprisingly hard to scale. "Show me the top 100 users, ranked by points" sounds like a basic database query. At scale, it becomes a bottleneck that can bring down your server.</p>
+
+        <p>When we built the leaderboard for SafaiPay, we had two options. We chose the right one.</p>
+
+        <h2>The Wrong Way: SQL ORDER BY</h2>
+
+        <p>The obvious approach: store user points in PostgreSQL, query with <code>ORDER BY points DESC LIMIT 100</code>.</p>
+
+        <p>This works fine with 100 users. With 100,000 users, it requires sorting the entire table on every request — O(N log N) every time someone opens the leaderboard screen. Add database indexes and it improves, but you're still doing significant work per request.</p>
+
+        <p>More critically: if points update frequently — every time a user completes an action — you need the leaderboard to reflect those updates in real time. With SQL, you're either running expensive queries constantly or showing stale data.</p>
+
+        <h2>The Right Way: Redis Sorted Sets</h2>
+
+        <p>Redis is an in-memory data store. Everything lives in RAM, which makes it orders of magnitude faster than disk-based databases for the right operations.</p>
+
+        <p>A Redis Sorted Set is a data structure that maintains a collection of members, each associated with a floating-point score, always sorted by score. This is exactly what a leaderboard needs.</p>
+
+        <p>Three operations cover the entire leaderboard feature:</p>
+
+        <ul>
+            <li><code>ZADD leaderboard 150 "user:123"</code> — add or update a user's score</li>
+            <li><code>ZREVRANGE leaderboard 0 99 WITHSCORES</code> — fetch top 100 users with scores</li>
+            <li><code>ZREVRANK leaderboard "user:123"</code> — get a specific user's rank</li>
+        </ul>
+
+        <p>Every one of these is O(log N) — the cost grows logarithmically with the number of users, not linearly. With 1 million users, fetching the top 100 is barely slower than with 1,000 users.</p>
+
+        <h2>How We Wired It Into SafaiPay</h2>
+
+        <p>Every time a user earned points — reporting garbage, completing a pickup, hitting a badge milestone — two things happened simultaneously:</p>
+
+        <ol>
+            <li>PostgreSQL recorded the transaction (permanent ledger)</li>
+            <li>Redis updated the leaderboard score with <code>ZINCRBY</code></li>
+        </ol>
+
+        <p><code>ZINCRBY leaderboard 10 "user:456"</code> — increment user 456's score by 10. Atomic, instant, no race conditions.</p>
+
+        <p>When a user opened the leaderboard screen, we fetched the top 50 users from Redis in a single command — typically under 1 millisecond. We also fetched the requesting user's personal rank with <code>ZREVRANK</code>, so they always saw where they stood relative to the top.</p>
+
+        <h2>Handling Score Ties</h2>
+
+        <p>When two users have the same score, Redis orders them lexicographically by member name — essentially arbitrary. For a civic app, this is fine. For a competitive game, you might want to break ties by timestamp: encode the time of the last point event into the score as a decimal fraction, so earlier achievers rank higher among equals.</p>
+
+        <h2>Persistence: Redis Is Not a Database</h2>
+
+        <p>Redis is fast because it lives in memory. Memory is volatile — if the server restarts, data is lost unless you've configured persistence.</p>
+
+        <p>We solved this simply: Redis is our leaderboard cache, not our source of truth. PostgreSQL holds the permanent point balances. On server restart, we rebuild the Redis leaderboard from PostgreSQL with a single query — typically takes under a second for our user count.</p>
+
+        <blockquote>Use Redis for speed. Use PostgreSQL for truth. Never confuse the two.</blockquote>
+
+        <p>This pattern — fast read layer in Redis, durable write layer in PostgreSQL — appears in almost every high-scale backend. Learn it once and you'll reach for it constantly.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Backend & Mobile Developer</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>

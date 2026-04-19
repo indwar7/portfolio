@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhaydeep Indwar — Content Writer</title>
+    <title>Abhaydeep Indwar — Mobile Developer & Technical Writer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -15,8 +15,8 @@
         <nav class="nav-links" id="navLinks">
             <a href="#about">About</a>
             <a href="#writing">Writing</a>
-            <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
+            <a href="#achievements">Achievements</a>
             <a href="#contact">Contact</a>
         </nav>
         <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
@@ -25,12 +25,22 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-inner">
-            <p class="hero-kicker">Content Writer · Finance &amp; Tech</p>
-            <h1 class="hero-title">Words that<br><em>move people</em><br>to act.</h1>
-            <p class="hero-sub">I write clear, research-backed content on personal finance, investing, and technology — built for readers who want signal, not noise.</p>
+            <p class="hero-kicker">Mobile Developer · Flutter · React Native · Go</p>
+            <h1 class="hero-title">I build things.<br>Then I explain<br><em>them clearly.</em></h1>
+            <p class="hero-sub">I ship production mobile apps and write the technical content that makes them legible. CS Engineer @ AKGEC · App Dev Intern @ Unfluke · Content Intern @ Groww (under Aseem) · SIH 2025 National Winner.</p>
+            <div class="hero-stack">
+                <span>Flutter</span>
+                <span>React Native</span>
+                <span>Go</span>
+                <span>Firebase</span>
+                <span>PostgreSQL</span>
+                <span>Redis</span>
+                <span>Docker</span>
+                <span>TFLite</span>
+            </div>
             <div class="hero-cta">
-                <a href="#writing" class="btn-primary">Read My Work</a>
-                <a href="mailto:abhayindwar7@gmail.com" class="btn-ghost">Get In Touch</a>
+                <a href="#projects" class="btn-primary">View Projects</a>
+                <a href="#writing" class="btn-ghost">Read My Writing</a>
             </div>
         </div>
         <div class="hero-rule"></div>
@@ -41,12 +51,13 @@
         <div class="section-grid">
             <div class="section-label">About</div>
             <div class="section-body">
-                <p class="about-lead">I'm Abhaydeep — a CS student at AKGEC (Data Science) with a sharp eye for making complex ideas simple.</p>
-                <p>My technical background in data science and mobile development gives me an unfair advantage as a writer: I understand the products I write about. Whether it's breaking down a mutual fund strategy or explaining how an app works to a first-time user, I translate complexity into clarity.</p>
-                <p>I've led engineering teams, shipped production apps, and won Smart India Hackathon 2025 — all of which taught me that the hardest part of any technical project is communicating it well.</p>
+                <p class="about-lead">I'm a Computer Science student at AKGEC specialising in Data Science — building production mobile apps at Unfluke and writing technical content at Groww under Aseem.</p>
+                <p>I won Smart India Hackathon 2025 leading a team of five — shipping a GPS platform for India's Ministry of Road Transport across 50+ cities, 2K+ users, 50K+ daily trips. I build across the full stack: Flutter frontends, Go backends, PostgreSQL + Redis, Docker deployments, and on-device ML with TFLite.</p>
+                <p>My engineering background is my edge as a writer. I don't write about systems I've read about — I write about systems I've built, debugged, and shipped. That's the difference between technical content that's accurate and technical content that's useful.</p>
                 <div class="about-facts">
                     <div class="fact"><span class="fact-n">8.0</span><span class="fact-l">CGPA @ AKGEC</span></div>
                     <div class="fact"><span class="fact-n">SIH</span><span class="fact-l">2025 National Winner</span></div>
+                    <div class="fact"><span class="fact-n">2+</span><span class="fact-l">Play Store Apps</span></div>
                     <div class="fact"><span class="fact-n">IBM</span><span class="fact-l">Certified</span></div>
                 </div>
             </div>
@@ -55,140 +66,115 @@
 
     <hr class="divider">
 
-    <!-- WRITING PORTFOLIO -->
+    <!-- WRITING -->
     <section id="writing" class="section writing">
         <div class="section-grid">
             <div class="section-label">Writing</div>
             <div class="section-body">
-                <p class="section-intro">Featured articles on finance, investing, and technology.</p>
+                <p class="section-intro">Technical articles built from real engineering — no fake content, no padding. Every piece is grounded in a system I actually built.</p>
 
                 <div class="articles">
 
                     <article class="article featured">
                         <div class="article-meta">
                             <span class="article-tag">Mobile Systems</span>
-                            <span class="article-date">Apr 2026 · 5 min</span>
+                            <span class="article-read">5 min read</span>
                         </div>
                         <h2 class="article-title"><a href="articles/offline-first-apps.html">How Offline-First Apps Save Battery and Improve Reliability</a></h2>
                         <p class="article-excerpt">Most apps fail silently when the network drops. Building TrackMatee for 50+ Indian cities taught me that offline-first isn't a feature — it's a foundation. SQLite caching, adaptive GPS sampling, and 99.9% data integrity across 50K+ daily trips.</p>
-                        <a href="articles/offline-first-apps.html" class="article-read">Read Article →</a>
+                        <a href="articles/offline-first-apps.html" class="article-cta">Read Article →</a>
                     </article>
 
                     <article class="article">
                         <div class="article-meta">
                             <span class="article-tag">Performance Engineering</span>
-                            <span class="article-date">Mar 2026 · 4 min</span>
+                            <span class="article-read">4 min read</span>
                         </div>
                         <h2 class="article-title"><a href="articles/battery-drain.html">Why Your App Is Draining Battery — And How to Fix It</a></h2>
-                        <p class="article-excerpt">GPS is the biggest battery killer in mobile apps. This piece breaks down the adaptive sampling strategy used in TrackMatee to cut battery consumption by 35% without losing trip accuracy.</p>
-                        <a href="articles/battery-drain.html" class="article-read">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Product & UX</span>
-                            <span class="article-date">Mar 2026 · 5 min</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/points-economy.html">Building a Points Economy: How Gamification Drives Real Civic Behaviour</a></h2>
-                        <p class="article-excerpt">SafaiPay rewards users for reporting garbage and booking pickups. How atomic transactions, Redis leaderboards, and badge psychology were designed to make civic participation feel like a game worth playing.</p>
-                        <a href="articles/points-economy.html" class="article-read">Read Article →</a>
-                    </article>
-
-                    <article class="article">
-                        <div class="article-meta">
-                            <span class="article-tag">Backend Engineering</span>
-                            <span class="article-date">Feb 2026 · 5 min</span>
-                        </div>
-                        <h2 class="article-title"><a href="articles/otp-to-payout.html">From OTP to Payout: How We Built Auth and Wallets in SafaiPay</a></h2>
-                        <p class="article-excerpt">A walkthrough of the full auth-to-withdrawal flow — Firebase OTP, JWT sessions, RazorpayX UPI payouts — explained for developers building their first fintech feature.</p>
-                        <a href="articles/otp-to-payout.html" class="article-read">Read Article →</a>
+                        <p class="article-excerpt">GPS is the biggest battery killer in mobile apps. The adaptive sampling strategy we used in TrackMatee to cut battery consumption by 35% without losing accuracy.</p>
+                        <a href="articles/battery-drain.html" class="article-cta">Read Article →</a>
                     </article>
 
                     <article class="article">
                         <div class="article-meta">
                             <span class="article-tag">Systems Design</span>
-                            <span class="article-date">Feb 2026 · 5 min</span>
+                            <span class="article-read">5 min read</span>
                         </div>
                         <h2 class="article-title"><a href="articles/websockets-vs-rest.html">WebSockets vs REST: What We Learned Building a Live Trading App</a></h2>
                         <p class="article-excerpt">Peanut Trading App needed real-time price feeds for 500+ concurrent users. When WebSockets beat REST, how we managed connection state, and what broke first under load.</p>
-                        <a href="articles/websockets-vs-rest.html" class="article-read">Read Article →</a>
+                        <a href="articles/websockets-vs-rest.html" class="article-cta">Read Article →</a>
                     </article>
 
                     <article class="article">
                         <div class="article-meta">
-                            <span class="article-tag">Mobile Systems</span>
-                            <span class="article-date">Jan 2026 · 4 min</span>
+                            <span class="article-tag">Backend Engineering</span>
+                            <span class="article-read">5 min read</span>
                         </div>
-                        <h2 class="article-title"><a href="articles/trading-app-offline.html">How to Keep a Trading App Alive When the Network Dies</a></h2>
-                        <p class="article-excerpt">Offline caching in a live trading context is tricky — stale prices are dangerous. How SQLite caching, error boundaries, and idempotency keys kept Peanut crash-free across 2,000+ daily transactions.</p>
-                        <a href="articles/trading-app-offline.html" class="article-read">Read Article →</a>
+                        <h2 class="article-title"><a href="articles/redis-leaderboards.html">How Redis Powers Real-Time Leaderboards</a></h2>
+                        <p class="article-excerpt">A SQL query that sorts millions of users is slow. Redis Sorted Sets do the same thing in O(log N). How we used this in SafaiPay — and why every competitive feature should use this pattern.</p>
+                        <a href="articles/redis-leaderboards.html" class="article-cta">Read Article →</a>
+                    </article>
+
+                    <article class="article">
+                        <div class="article-meta">
+                            <span class="article-tag">Backend Engineering</span>
+                            <span class="article-read">6 min read</span>
+                        </div>
+                        <h2 class="article-title"><a href="articles/jwt-authentication.html">Understanding JWT Authentication</a></h2>
+                        <p class="article-excerpt">How JSON Web Tokens work, why they're stateless, and how we used them in SafaiPay to build a secure, scalable auth system — explained from first principles.</p>
+                        <a href="articles/jwt-authentication.html" class="article-cta">Read Article →</a>
+                    </article>
+
+                    <article class="article">
+                        <div class="article-meta">
+                            <span class="article-tag">Product & UX</span>
+                            <span class="article-read">5 min read</span>
+                        </div>
+                        <h2 class="article-title"><a href="articles/points-economy.html">Building a Points Economy: How Gamification Drives Real Civic Behaviour</a></h2>
+                        <p class="article-excerpt">SafaiPay rewards users for reporting garbage. How atomic transactions, Redis leaderboards, and badge psychology were designed to make civic participation feel worth doing.</p>
+                        <a href="articles/points-economy.html" class="article-cta">Read Article →</a>
                     </article>
 
                     <article class="article">
                         <div class="article-meta">
                             <span class="article-tag">AI & Machine Learning</span>
-                            <span class="article-date">Apr 2026 · 6 min</span>
+                            <span class="article-read">6 min read</span>
                         </div>
                         <h2 class="article-title"><a href="articles/on-device-ml.html">On-Device ML: Running AI Without the Cloud</a></h2>
                         <p class="article-excerpt">Lucy AR runs garment try-on inference directly on your phone — no server, no latency. How TFLite quantisation, GPU delegation, and adaptive smoothing deliver 15–30 FPS on-device AI.</p>
-                        <a href="articles/on-device-ml.html" class="article-read">Read Article →</a>
+                        <a href="articles/on-device-ml.html" class="article-cta">Read Article →</a>
                     </article>
 
                     <article class="article">
                         <div class="article-meta">
                             <span class="article-tag">Computer Vision</span>
-                            <span class="article-date">Mar 2026 · 5 min</span>
+                            <span class="article-read">5 min read</span>
                         </div>
                         <h2 class="article-title"><a href="articles/body-landmarks.html">How We Track 33 Body Landmarks in Real Time on a Phone</a></h2>
-                        <p class="article-excerpt">A beginner-friendly breakdown of how ML Kit and TFLite work together to detect body pose, handle jitter with velocity-adaptive smoothing, and render garments that move naturally with you.</p>
-                        <a href="articles/body-landmarks.html" class="article-read">Read Article →</a>
+                        <p class="article-excerpt">A beginner-friendly breakdown of how ML Kit and TFLite work together to detect body pose, handle jitter with velocity-adaptive smoothing, and render garments that move naturally.</p>
+                        <a href="articles/body-landmarks.html" class="article-cta">Read Article →</a>
                     </article>
 
-                </div>
-            </div>
-        </div>
-    </section>
+                    <article class="article">
+                        <div class="article-meta">
+                            <span class="article-tag">Mobile Systems</span>
+                            <span class="article-read">4 min read</span>
+                        </div>
+                        <h2 class="article-title"><a href="articles/trading-app-offline.html">How to Keep a Trading App Alive When the Network Dies</a></h2>
+                        <p class="article-excerpt">Offline caching in a live trading context is tricky — stale prices are dangerous. How SQLite caching, error boundaries, and idempotency keys kept Peanut crash-free across 2,000+ daily transactions.</p>
+                        <a href="articles/trading-app-offline.html" class="article-cta">Read Article →</a>
+                    </article>
 
-    <hr class="divider">
+                    <article class="article">
+                        <div class="article-meta">
+                            <span class="article-tag">Backend Engineering</span>
+                            <span class="article-read">5 min read</span>
+                        </div>
+                        <h2 class="article-title"><a href="articles/otp-to-payout.html">From OTP to Payout: How We Built Auth and Wallets in SafaiPay</a></h2>
+                        <p class="article-excerpt">A walkthrough of the full auth-to-withdrawal flow — Firebase OTP, JWT sessions, RazorpayX UPI payouts — explained for developers building their first fintech feature.</p>
+                        <a href="articles/otp-to-payout.html" class="article-cta">Read Article →</a>
+                    </article>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section skills">
-        <div class="section-grid">
-            <div class="section-label">Skills</div>
-            <div class="section-body">
-                <div class="skills-grid">
-                    <div class="skill-group">
-                        <h3>Writing</h3>
-                        <ul>
-                            <li>Long-form &amp; explainer articles</li>
-                            <li>SEO content &amp; blog writing</li>
-                            <li>Personal finance &amp; investing</li>
-                            <li>Technical writing &amp; documentation</li>
-                            <li>Social media copy</li>
-                            <li>Research &amp; fact-checking</li>
-                        </ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Tools</h3>
-                        <ul>
-                            <li>Notion &amp; Google Docs</li>
-                            <li>Ahrefs / SEMrush basics</li>
-                            <li>Grammarly &amp; Hemingway App</li>
-                            <li>WordPress &amp; Medium</li>
-                            <li>Canva (visual support)</li>
-                            <li>ChatGPT (research assist)</li>
-                        </ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Technical Edge</h3>
-                        <ul>
-                            <li>Data Science (Python, SQL)</li>
-                            <li>Mobile app development</li>
-                            <li>Product &amp; UX understanding</li>
-                            <li>Financial data analysis</li>
-                            <li>GitHub &amp; version control</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
@@ -201,34 +187,88 @@
         <div class="section-grid">
             <div class="section-label">Projects</div>
             <div class="section-body">
-                <p class="section-intro">Technical projects that inform my writing — I've built what I write about.</p>
+                <p class="section-intro">Production systems — built, shipped, and running.</p>
                 <div class="proj-list">
 
-                    <div class="proj-item">
-                        <div class="proj-top">
-                            <h3>TrackMatee</h3>
-                            <span class="proj-tag">🏆 SIH 2025 Winner</span>
+                    <div class="proj-card">
+                        <div class="proj-card-top">
+                            <div>
+                                <span class="proj-year">2025</span>
+                                <h3 class="proj-name">TrackMatee</h3>
+                            </div>
+                            <span class="proj-badge">🏆 SIH 2025 Winner</span>
                         </div>
-                        <p>National GPS mobility analytics platform for India's MoRTH. Led a 5-person team, shipped across 50+ cities, 2K+ users, 50K+ daily trips. Taught me how to communicate complex technical systems to non-technical stakeholders.</p>
-                        <div class="proj-chips"><span>Flutter</span><span>Firebase</span><span>GPS API</span></div>
+                        <p class="proj-desc">National GPS mobility analytics platform for India's Ministry of Road Transport. Led a 5-person team. Offline-first architecture, adaptive GPS sampling, processing 50,000+ daily trips across 50+ cities with zero downtime.</p>
+                        <div class="proj-meta-row">
+                            <span class="proj-stack">Flutter · Firebase · Google Maps · SQLite</span>
+                            <a href="articles/offline-first-apps.html" class="proj-view">View Case Study →</a>
+                        </div>
+                        <div class="proj-impact">
+                            <span>2K+ users</span>
+                            <span>50K+ daily trips</span>
+                            <span>40% accuracy ↑</span>
+                            <span>35% battery ↓</span>
+                        </div>
                     </div>
 
-                    <div class="proj-item">
-                        <div class="proj-top">
-                            <h3>SafaiPay</h3>
-                            <span class="proj-tag">Full-Stack</span>
+                    <div class="proj-card">
+                        <div class="proj-card-top">
+                            <div>
+                                <span class="proj-year">2026</span>
+                                <h3 class="proj-name">Lucy — AR Try-On</h3>
+                            </div>
+                            <span class="proj-badge">AI · AR</span>
                         </div>
-                        <p>Waste management &amp; rewards platform with gamified points, Redis leaderboards, and RazorpayX wallet payouts. Writing the product narrative for this taught me how to frame civic-tech stories compellingly.</p>
-                        <div class="proj-chips"><span>Flutter</span><span>Go</span><span>PostgreSQL</span><span>Docker</span></div>
+                        <p class="proj-desc">Real-time AR garment try-on with on-device ML inference tracking 33 body landmarks at 15–30 FPS. GPU-accelerated pipeline, velocity-adaptive smoothing, IDM-VTON diffusion models. No server, no latency.</p>
+                        <div class="proj-meta-row">
+                            <span class="proj-stack">Flutter · TFLite · Camera2 · ARKit · Python</span>
+                            <a href="articles/on-device-ml.html" class="proj-view">View Case Study →</a>
+                        </div>
+                        <div class="proj-impact">
+                            <span>15–30 FPS on-device</span>
+                            <span>33 landmarks</span>
+                            <span>Zero server latency</span>
+                        </div>
                     </div>
 
-                    <div class="proj-item">
-                        <div class="proj-top">
-                            <h3>Lucy – AR Try-On</h3>
-                            <span class="proj-tag">AI / AR</span>
+                    <div class="proj-card">
+                        <div class="proj-card-top">
+                            <div>
+                                <span class="proj-year">2026</span>
+                                <h3 class="proj-name">SafaiPay</h3>
+                            </div>
+                            <span class="proj-badge">Full-Stack</span>
                         </div>
-                        <p>Real-time AR garment try-on using on-device ML, 33 body landmark tracking, and IDM-VTON diffusion models. Deepened my ability to explain AI/ML concepts to general audiences without losing accuracy.</p>
-                        <div class="proj-chips"><span>Flutter</span><span>TFLite</span><span>ARKit</span><span>Python</span></div>
+                        <p class="proj-desc">End-to-end waste management and rewards platform. Go backend with 28 REST endpoints, Redis O(log N) leaderboards, Firebase OTP + JWT auth, gamified badge system, and RazorpayX UPI wallet payouts. Deployed via Docker on Railway.</p>
+                        <div class="proj-meta-row">
+                            <span class="proj-stack">Flutter · Go · PostgreSQL · Redis · Docker</span>
+                            <a href="articles/redis-leaderboards.html" class="proj-view">View Case Study →</a>
+                        </div>
+                        <div class="proj-impact">
+                            <span>28 endpoints</span>
+                            <span>15 badges</span>
+                            <span>UPI payouts</span>
+                        </div>
+                    </div>
+
+                    <div class="proj-card">
+                        <div class="proj-card-top">
+                            <div>
+                                <span class="proj-year">2025</span>
+                                <h3 class="proj-name">Peanut Trading App</h3>
+                            </div>
+                            <span class="proj-badge">FinTech</span>
+                        </div>
+                        <p class="proj-desc">Live commodity trading platform with WebSocket-driven real-time price feeds and Firebase order management. Optimised Firestore indexing for 40% faster processing. SQLite offline caching for crash-free operation.</p>
+                        <div class="proj-meta-row">
+                            <span class="proj-stack">Flutter · WebSocket · Firebase · SQLite</span>
+                            <a href="articles/websockets-vs-rest.html" class="proj-view">View Case Study →</a>
+                        </div>
+                        <div class="proj-impact">
+                            <span>500+ concurrent users</span>
+                            <span>2K+ daily transactions</span>
+                            <span>40% faster processing</span>
+                        </div>
                     </div>
 
                 </div>
@@ -238,11 +278,85 @@
 
     <hr class="divider">
 
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="section achievements">
+        <div class="section-grid">
+            <div class="section-label">Achievements</div>
+            <div class="section-body">
+
+                <div class="ach-list">
+
+                    <div class="ach-item">
+                        <span class="ach-year">2026</span>
+                        <div class="ach-content">
+                            <h3>Content Intern @ Groww — under Aseem</h3>
+                            <p>Writing technical and financial content at Groww, India's largest investment platform, under the mentorship of Aseem. Focused on making investing concepts accessible to first-time users — translating complex financial and product ideas into clear, beginner-friendly language.</p>
+                        </div>
+                    </div>
+
+                    <div class="ach-item">
+                        <span class="ach-year">2025</span>
+                        <div class="ach-content">
+                            <h3>Winner — Smart India Hackathon 2025</h3>
+                            <p>Led a team of five to win India's largest national-level hackathon, organised by the Ministry of Education. Built TrackMatee — selected from thousands of submissions across the country. Presented to a national jury and won at the final stage against teams from premier institutions.</p>
+                        </div>
+                    </div>
+
+                    <div class="ach-item">
+                        <span class="ach-year">2026</span>
+                        <div class="ach-content">
+                            <h3>Published Apps — Google Play Store</h3>
+                            <p>Shipped 2+ production applications on Google Play Store with real users and active traffic. Both apps were built independently — from architecture and backend to UI and deployment — without a team or external infrastructure support.</p>
+                        </div>
+                    </div>
+
+                    <div class="ach-item">
+                        <span class="ach-year">2025</span>
+                        <div class="ach-content">
+                            <h3>IBM Certified — Project Management &amp; Data Science</h3>
+                            <p>Certified by IBM in two disciplines: Project Management Professional (agile delivery, scope, and stakeholder communication) and Data Science Professional (data pipelines, model evaluation, and applied ML workflows).</p>
+                        </div>
+                    </div>
+
+                    <div class="ach-item">
+                        <span class="ach-year">2025</span>
+                        <div class="ach-content">
+                            <h3>Virtual Internships — Tata · Goldman Sachs · Accenture</h3>
+                            <p>Completed structured virtual engineering internships with three global firms — covering systems design at Tata Group, financial engineering at Goldman Sachs, and enterprise software practices at Accenture Technology.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- RESUME / CTA -->
+    <section id="resume" class="section resume">
+        <div class="resume-inner">
+            <p class="resume-tag">Open to internships and technical writing roles.</p>
+            <h2 class="resume-title">Let's build something<br><em>worth explaining.</em></h2>
+            <p class="resume-sub">I'm available for content writing internships, technical documentation roles, and mobile development opportunities. I respond within 24 hours.</p>
+            <div class="resume-actions">
+                <a href="AbhayIndwar_SDE.pdf" download class="btn-primary">Download Resume</a>
+                <a href="mailto:abhayindwar7@gmail.com" class="btn-ghost">Email Me</a>
+            </div>
+            <div class="resume-links">
+                <a href="https://linkedin.com/in/abhayindwar7" target="_blank">LinkedIn ↗</a>
+                <a href="https://github.com/indwar7" target="_blank">GitHub ↗</a>
+                <a href="mailto:abhayindwar7@gmail.com">abhayindwar7@gmail.com</a>
+                <a href="tel:+918279343179">+91-82793-43179</a>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT -->
-    <section id="contact" class="section contact">
+    <section id="contact" class="contact">
         <div class="contact-inner">
             <h2 class="contact-title">Let's work<br><em>together.</em></h2>
-            <p class="contact-sub">Open to content writing internships, freelance assignments, and collaborations. I respond within 24 hours.</p>
+            <p class="contact-sub">Open to content writing internships, technical documentation, and mobile development roles. I respond within 24 hours.</p>
             <div class="contact-links">
                 <a href="mailto:abhayindwar7@gmail.com">abhayindwar7@gmail.com</a>
                 <a href="https://linkedin.com/in/abhayindwar7" target="_blank">LinkedIn</a>
@@ -253,8 +367,8 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <span>©2026 Abhaydeep Indwar</span>
-        <a href="#" class="footer-top">↑ Back to top</a>
+        <span>©2026 Abhaydeep Indwar — Developer &amp; Technical Writer</span>
+        <a href="#" class="footer-top">↑ Top</a>
     </footer>
 
     <script src="script.js"></script>
