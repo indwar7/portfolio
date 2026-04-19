@@ -240,18 +240,21 @@ em { font-style: italic; }
 ============================================ */
 .about-lead {
     font-family: var(--font-serif);
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.55;
+    margin-bottom: 24px;
     color: var(--white);
+    font-style: italic;
 }
 .section-body p {
-    color: var(--gray-400);
-    margin-bottom: 16px;
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 1.8;
+    color: var(--white);
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.9;
+    font-family: var(--font-serif);
+    letter-spacing: 0.1px;
 }
 .about-facts {
     display: flex;
