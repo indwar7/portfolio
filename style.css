@@ -658,11 +658,11 @@ em { font-style: italic; }
     flex-direction: column;
     align-items: center;
     gap: 0;
-    transition: transform 0.4s ease;
+    transition: transform 0.12s ease;
     cursor: default;
 }
 
-/* Bubble */
+/* Bubble — spring pop */
 .guy-bubble {
     background: var(--white);
     color: var(--black);
@@ -674,9 +674,10 @@ em { font-style: italic; }
     margin-bottom: 8px;
     white-space: nowrap;
     opacity: 0;
-    transform: translateY(6px) scale(0.9);
-    transition: all 0.3s ease;
+    transform: translateY(8px) scale(0.85);
+    transition: opacity 0.12s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
     box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    pointer-events: none;
 }
 .guy-bubble.show {
     opacity: 1;
@@ -690,7 +691,7 @@ em { font-style: italic; }
     background: var(--white);
     border-radius: 50%;
     position: relative;
-    transition: transform 0.4s ease;
+    transition: transform 0.12s ease;
     box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
 }
 .guy-eyes {
@@ -704,7 +705,7 @@ em { font-style: italic; }
     height: 5px;
     background: var(--black);
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
 }
 .guy-mouth {
     width: 12px;
@@ -712,7 +713,7 @@ em { font-style: italic; }
     border-bottom: 2px solid var(--black);
     border-radius: 0 0 6px 6px;
     margin: 4px auto 0;
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
 }
 
 /* Body */
@@ -732,13 +733,13 @@ em { font-style: italic; }
     background: var(--white);
     border-radius: 5px;
     top: 4px;
-    transition: transform 0.4s ease;
+    transition: transform 0.12s ease;
     box-shadow: 0 0 0 1.5px rgba(0,0,0,0.1);
 }
 .guy-arm.left  { left: -12px; transform: rotate(15deg); transform-origin: top center; }
 .guy-arm.right { right: -12px; transform: rotate(-15deg); transform-origin: top center; }
 
-/* Phone in right hand */
+/* Phone */
 .guy-phone {
     position: absolute;
     bottom: -10px;
@@ -756,11 +757,11 @@ em { font-style: italic; }
     background: rgba(255,255,255,0.15);
     border-radius: 1px;
     margin: 2px auto;
-    animation: screenGlow 2s ease-in-out infinite;
+    animation: screenGlow 1.8s ease-in-out infinite;
 }
 @keyframes screenGlow {
-    0%,100% { background: rgba(255,255,255,0.1); }
-    50%      { background: rgba(255,255,255,0.45); }
+    0%,100% { background: rgba(255,255,255,0.08); }
+    50%      { background: rgba(255,255,255,0.5); }
 }
 
 /* Legs */
@@ -779,41 +780,50 @@ em { font-style: italic; }
 
 /* ---- CHARACTER STATES ---- */
 
-/* idle: head tilted down at phone */
-.guy.idle .guy-head { transform: rotate(18deg) translateY(2px); }
-.guy.idle .guy-arm.right { transform: rotate(-40deg); }
-.guy.idle .guy-arm.left  { transform: rotate(20deg); }
+/* IDLE — deep in phone, eyes squinted, thumb tapping */
+.guy.idle .guy-head      { transform: rotate(22deg) translateY(4px); }
+.guy.idle .guy-arm.right { transform: rotate(-48deg); }
+.guy.idle .guy-arm.left  { transform: rotate(28deg); }
+.guy.idle .guy-eye       { height: 2px; border-radius: 2px; }
+.guy.idle .guy-mouth     { width: 10px; border-radius: 0 0 4px 4px; }
+.guy.idle                { animation: idleBob 2.4s ease-in-out infinite; }
+.guy.idle .guy-screen    { animation: screenGlow 0.6s ease-in-out infinite; }
 
-/* idle bob */
-.guy.idle { animation: idleBob 3s ease-in-out infinite; }
 @keyframes idleBob {
     0%,100% { transform: translateY(0); }
-    50%      { transform: translateY(-4px); }
+    50%      { transform: translateY(-3px); }
 }
 
-/* scrolling: leaning forward, reading */
-.guy.scrolling { animation: readingLean 0.8s ease-in-out infinite alternate; }
-@keyframes readingLean {
+/* SCROLLING — instant snap, wide eyes, lean in */
+.guy.scrolling                { animation: readLean 0.55s ease-in-out infinite alternate; }
+.guy.scrolling .guy-head      { transform: rotate(-4deg) translateY(-2px); }
+.guy.scrolling .guy-arm.left  { transform: rotate(-42deg); }
+.guy.scrolling .guy-arm.right { transform: rotate(-38deg); }
+.guy.scrolling .guy-eye       { width: 6px; height: 6px; }
+.guy.scrolling .guy-mouth     { width: 15px; }
+.guy.scrolling .guy-screen    { animation: screenGlow 0.3s ease-in-out infinite; }
+
+@keyframes readLean {
     from { transform: translateY(0) rotate(0deg); }
-    to   { transform: translateY(-6px) rotate(-3deg); }
+    to   { transform: translateY(-7px) rotate(-4deg); }
 }
-.guy.scrolling .guy-head { transform: rotate(-8deg) translateY(-3px); }
-.guy.scrolling .guy-arm.left  { transform: rotate(-35deg); }
-.guy.scrolling .guy-arm.right { transform: rotate(-35deg); }
-.guy.scrolling .guy-mouth { width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--black); border-bottom: none; }
 
-/* excited: bounce */
-.guy.excited { animation: excitedBounce 0.4s ease infinite alternate; }
+/* EXCITED — big bounce, big eyes */
+.guy.excited                { animation: excitedBounce 0.35s ease infinite alternate; }
+.guy.excited .guy-eye       { width: 7px; height: 7px; }
+.guy.excited .guy-mouth     { width: 16px; }
 @keyframes excitedBounce {
     from { transform: translateY(0); }
-    to   { transform: translateY(-8px); }
+    to   { transform: translateY(-10px); }
 }
 
-/* wave: left arm waves */
-.guy.wave .guy-arm.left { animation: waveArm 0.5s ease-in-out infinite alternate; }
+/* WAVE — arm waves, friendly eyes */
+.guy.wave .guy-arm.left  { animation: waveArm 0.45s ease-in-out infinite alternate; }
+.guy.wave .guy-head      { transform: rotate(5deg); }
+.guy.wave .guy-mouth     { width: 16px; }
 @keyframes waveArm {
-    from { transform: rotate(-60deg); }
-    to   { transform: rotate(-20deg); }
+    from { transform: rotate(-65deg); }
+    to   { transform: rotate(-15deg); }
 }
 
 @media (max-width: 640px) { .guy { right: 16px; } }
