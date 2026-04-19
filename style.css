@@ -791,12 +791,16 @@ em { font-style: italic; }
     50%      { transform: translateY(-4px); }
 }
 
-/* scrolling: head up, arms raised */
-.guy.scrolling .guy-head { transform: rotate(-5deg); }
-.guy.scrolling .guy-arm.left  { transform: rotate(-20deg); }
-.guy.scrolling .guy-arm.right { transform: rotate(10deg); }
-.guy.scrolling .guy-mouth { width: 16px; }
-.guy.scrolling { animation: none; }
+/* scrolling: leaning forward, reading */
+.guy.scrolling { animation: readingLean 0.8s ease-in-out infinite alternate; }
+@keyframes readingLean {
+    from { transform: translateY(0) rotate(0deg); }
+    to   { transform: translateY(-6px) rotate(-3deg); }
+}
+.guy.scrolling .guy-head { transform: rotate(-8deg) translateY(-3px); }
+.guy.scrolling .guy-arm.left  { transform: rotate(-35deg); }
+.guy.scrolling .guy-arm.right { transform: rotate(-35deg); }
+.guy.scrolling .guy-mouth { width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--black); border-bottom: none; }
 
 /* excited: bounce */
 .guy.excited { animation: excitedBounce 0.4s ease infinite alternate; }

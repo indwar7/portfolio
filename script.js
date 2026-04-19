@@ -63,28 +63,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
     if (!guy || !bubble || !bubbleText) return;
 
-    let idleTimer = null;
+    let idleTimer   = null;
     let scrollTimer = null;
-    let isIdle = true;
+    let curState    = '';
+    let throttled   = false;
 
     const messages = {
         idle:         ['just chillin 📱', 'reading docs 📱', 'on Twitter 📱', 'checking notifs 📱', 'doom scrolling... 📱'],
-        scrolling:    ['wait, reading this! 👀', 'this part is good →', 'interesting... 🤔', 'keep going! 📖', 'oooh nice 👁'],
+        scrolling:    ['wait, reading this! 👀', 'this part is good →', 'interesting... 🤔', 'keep going! 📖', 'oooh nice 👁️'],
         projects:     ['I built this!! 🔥', 'TrackMatee was hard 😅', 'Go backend goes brr 🚀', 'SIH grind paid off 🏆'],
         writing:      ['I wrote this! ✍️', 'technical writer mode on', '600 words later... 😮‍💨'],
-        contact:      ['say hi!! 👋', 'I reply fast 😤', 'let\'s build something!'],
+        contact:      ['say hi!! 👋', 'I reply fast 😤', "let's build something!"],
         achievements: ['national winner btw 🏆', 'no big deal 😎', 'AKGEC represent 🎓'],
     };
 
     const pick = arr => arr[Math.floor(Math.random() * arr.length)];
-
-    function setState(state, msg) {
-        guy.className = 'guy ' + state;
-        if (msg) {
-            bubbleText.textContent = msg;
-            bubble.classList.add('show');
-        }
-    }
 
     function showBubble(msg, duration = 2800) {
         bubbleText.textContent = msg;
@@ -92,28 +85,35 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         setTimeout(() => bubble.classList.remove('show'), duration);
     }
 
+    function setState(state) {
+        if (curState === state) return;
+        curState = state;
+        guy.className = 'guy ' + state;
+    }
+
     function goIdle() {
-        isIdle = true;
-        setState('idle', pick(messages.idle));
-        idleTimer = setInterval(() => {
-            if (isIdle) {
-                bubbleText.textContent = pick(messages.idle);
-                bubble.classList.add('show');
-            }
-        }, 4000);
+        clearInterval(idleTimer);
+        setState('idle');
+        showBubble(pick(messages.idle), 3000);
+        idleTimer = setInterval(() => showBubble(pick(messages.idle), 3000), 5000);
     }
 
-    function onScrolling() {
-        if (isIdle) {
-            clearInterval(idleTimer);
-            isIdle = false;
-        }
+    function startScrolling() {
+        clearInterval(idleTimer);
         clearTimeout(scrollTimer);
-        setState('scrolling', pick(messages.scrolling));
-        scrollTimer = setTimeout(() => goIdle(), 1800);
+        if (curState !== 'scrolling') {
+            setState('scrolling');
+            showBubble(pick(messages.scrolling), 2200);
+        }
+        scrollTimer = setTimeout(goIdle, 2200);
     }
 
-    window.addEventListener('scroll', onScrolling, { passive: true });
+    window.addEventListener('scroll', () => {
+        if (throttled) return;
+        throttled = true;
+        setTimeout(() => { throttled = false; }, 120);
+        startScrolling();
+    }, { passive: true });
 
     const sectionMsgs = {
         work:         messages.projects,
@@ -127,18 +127,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
         new IntersectionObserver(entries => {
             entries.forEach(e => {
                 if (!e.isIntersecting) return;
-                showBubble(pick(sectionMsgs[id]), 3200);
+                showBubble(pick(sectionMsgs[id]), 3000);
                 if (id === 'achievements') {
                     guy.classList.add('excited');
                     setTimeout(() => guy.classList.remove('excited'), 2200);
                 }
                 if (id === 'contact') {
-                    setState('wave', pick(messages.contact));
-                    setTimeout(() => goIdle(), 3200);
+                    clearInterval(idleTimer);
+                    clearTimeout(scrollTimer);
+                    curState = '';
+                    setState('wave');
+                    showBubble(pick(messages.contact), 3000);
+                    setTimeout(goIdle, 3300);
                 }
             });
         }, { threshold: 0.4 }).observe(el);
     });
 
-    setTimeout(() => goIdle(), 800);
+    setTimeout(goIdle, 800);
 })();
