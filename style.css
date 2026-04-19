@@ -561,6 +561,170 @@ em { font-style: italic; }
 .footer-top:hover { color: var(--white); }
 
 /* ============================================
+   CHARACTER
+============================================ */
+.guy {
+    position: fixed;
+    bottom: 0;
+    right: 48px;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    transition: transform 0.4s ease;
+    cursor: default;
+}
+
+/* Bubble */
+.guy-bubble {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 20px 20px 20px 4px;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(6px) scale(0.9);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.guy-bubble.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Head */
+.guy-head {
+    width: 36px;
+    height: 36px;
+    background: var(--white);
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+.guy-eyes {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 12px;
+}
+.guy-eye {
+    width: 5px;
+    height: 5px;
+    background: var(--black);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+.guy-mouth {
+    width: 12px;
+    height: 5px;
+    border-bottom: 2px solid var(--black);
+    border-radius: 0 0 6px 6px;
+    margin: 4px auto 0;
+    transition: all 0.3s ease;
+}
+
+/* Body */
+.guy-body {
+    width: 30px;
+    height: 38px;
+    background: var(--white);
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    margin-top: 3px;
+}
+.guy-arm {
+    position: absolute;
+    width: 10px;
+    height: 28px;
+    background: var(--white);
+    border-radius: 5px;
+    top: 4px;
+    transition: transform 0.4s ease;
+}
+.guy-arm.left  { left: -12px; transform: rotate(15deg); transform-origin: top center; }
+.guy-arm.right { right: -12px; transform: rotate(-15deg); transform-origin: top center; }
+
+/* Phone in right hand */
+.guy-phone {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9px;
+    height: 14px;
+    background: var(--black);
+    border: 1.5px solid var(--white);
+    border-radius: 2px;
+}
+.guy-screen {
+    width: 5px;
+    height: 8px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 1px;
+    margin: 2px auto;
+    animation: screenGlow 2s ease-in-out infinite;
+}
+@keyframes screenGlow {
+    0%,100% { background: rgba(255,255,255,0.1); }
+    50%      { background: rgba(255,255,255,0.45); }
+}
+
+/* Legs */
+.guy-legs {
+    display: flex;
+    gap: 6px;
+    margin-top: 1px;
+}
+.guy-leg {
+    width: 11px;
+    height: 22px;
+    background: var(--white);
+    border-radius: 0 0 4px 4px;
+}
+
+/* ---- STATES ---- */
+
+/* idle: head tilted down at phone */
+.guy.idle .guy-head { transform: rotate(18deg) translateY(2px); }
+.guy.idle .guy-arm.right { transform: rotate(-40deg); }
+.guy.idle .guy-arm.left  { transform: rotate(20deg); }
+
+/* idle bob */
+.guy.idle { animation: idleBob 3s ease-in-out infinite; }
+@keyframes idleBob {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-4px); }
+}
+
+/* scrolling: head up, arms raised */
+.guy.scrolling .guy-head { transform: rotate(-5deg); }
+.guy.scrolling .guy-arm.left  { transform: rotate(-20deg); }
+.guy.scrolling .guy-arm.right { transform: rotate(10deg); }
+.guy.scrolling .guy-mouth { border-bottom-color: var(--black); width: 16px; }
+.guy.scrolling { animation: none; }
+
+/* excited: bounce */
+.guy.excited { animation: excitedBounce 0.4s ease infinite alternate; }
+@keyframes excitedBounce {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-8px); }
+}
+
+/* wave: left arm waves */
+.guy.wave .guy-arm.left { animation: waveArm 0.5s ease-in-out infinite alternate; }
+@keyframes waveArm {
+    from { transform: rotate(-60deg); }
+    to   { transform: rotate(-20deg); }
+}
+
+@media (max-width: 640px) { .guy { right: 16px; } }
+
+/* ============================================
    RESPONSIVE
 ============================================ */
 @media (max-width: 860px) {
