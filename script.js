@@ -56,106 +56,89 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 // ============================================
 // CHARACTER
 // ============================================
-const guy        = document.getElementById('guy');
-const bubble     = document.getElementById('guyBubble');
-const bubbleText = document.getElementById('bubbleText');
+(function () {
+    const guy        = document.getElementById('guy');
+    const bubble     = document.getElementById('guyBubble');
+    const bubbleText = document.getElementById('bubbleText');
 
-if (!guy) return;
+    if (!guy || !bubble || !bubbleText) return;
 
-let idleTimer = null;
-let scrollTimer = null;
-let isIdle = true;
+    let idleTimer = null;
+    let scrollTimer = null;
+    let isIdle = true;
 
-const messages = {
-    idle:      ['just chillin 📱', 'reading docs 📱', 'on Twitter 📱', 'checking notifs 📱', 'doom scrolling... 📱'],
-    scrolling: ['wait, reading this! 👀', 'this part is good →', 'interesting... 🤔', 'keep going! 📖', 'oooh nice 👁'],
-    projects:  ['I built this!! 🔥', 'TrackMatee was hard 😅', 'Go backend goes brr 🚀', 'SIH grind paid off 🏆'],
-    writing:   ['I wrote this! ✍️', 'technical writer mode on', '600 words later... 😮‍💨'],
-    contact:   ['say hi!! 👋', 'I reply fast 😤', 'let\'s build something!'],
-    achievements: ['national winner btw 🏆', 'no big deal 😎', 'AKGEC represent 🎓'],
-};
+    const messages = {
+        idle:         ['just chillin 📱', 'reading docs 📱', 'on Twitter 📱', 'checking notifs 📱', 'doom scrolling... 📱'],
+        scrolling:    ['wait, reading this! 👀', 'this part is good →', 'interesting... 🤔', 'keep going! 📖', 'oooh nice 👁'],
+        projects:     ['I built this!! 🔥', 'TrackMatee was hard 😅', 'Go backend goes brr 🚀', 'SIH grind paid off 🏆'],
+        writing:      ['I wrote this! ✍️', 'technical writer mode on', '600 words later... 😮‍💨'],
+        contact:      ['say hi!! 👋', 'I reply fast 😤', 'let\'s build something!'],
+        achievements: ['national winner btw 🏆', 'no big deal 😎', 'AKGEC represent 🎓'],
+    };
 
-const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
 
-function setState(state, msg) {
-    guy.className = 'guy ' + state;
-    if (msg) {
-        bubbleText.textContent = msg;
-        bubble.classList.add('show');
-    }
-}
-
-function showBubble(msg, duration = 2800) {
-    bubbleText.textContent = msg;
-    bubble.classList.add('show');
-    setTimeout(() => bubble.classList.remove('show'), duration);
-}
-
-function goIdle() {
-    isIdle = true;
-    setState('idle', pick(messages.idle));
-    // cycle idle messages every 4s
-    idleTimer = setInterval(() => {
-        if (isIdle) {
-            bubbleText.textContent = pick(messages.idle);
+    function setState(state, msg) {
+        guy.className = 'guy ' + state;
+        if (msg) {
+            bubbleText.textContent = msg;
             bubble.classList.add('show');
         }
-    }, 4000);
-}
-
-function onScrolling() {
-    if (isIdle) {
-        clearInterval(idleTimer);
-        isIdle = false;
     }
-    clearTimeout(scrollTimer);
-    setState('scrolling', pick(messages.scrolling));
 
-    scrollTimer = setTimeout(() => goIdle(), 1800);
-}
+    function showBubble(msg, duration = 2800) {
+        bubbleText.textContent = msg;
+        bubble.classList.add('show');
+        setTimeout(() => bubble.classList.remove('show'), duration);
+    }
 
-window.addEventListener('scroll', onScrolling, { passive: true });
-
-// Section-aware messages
-const sectionMsgs = {
-    writing:      messages.writing,
-    projects:     messages.projects,
-    achievements: messages.achievements,
-    contact:      messages.contact,
-};
-
-new IntersectionObserver(entries => {
-    entries.forEach(e => {
-        if (e.isIntersecting && sectionMsgs[e.target.id]) {
-            showBubble(pick(sectionMsgs[e.target.id]), 3000);
-            if (e.target.id === 'achievements') {
-                guy.classList.add('excited');
-                setTimeout(() => guy.classList.remove('excited'), 2000);
+    function goIdle() {
+        isIdle = true;
+        setState('idle', pick(messages.idle));
+        idleTimer = setInterval(() => {
+            if (isIdle) {
+                bubbleText.textContent = pick(messages.idle);
+                bubble.classList.add('show');
             }
-            if (e.target.id === 'contact') {
-                setState('wave', pick(messages.contact));
-                setTimeout(() => goIdle(), 3000);
-            }
+        }, 4000);
+    }
+
+    function onScrolling() {
+        if (isIdle) {
+            clearInterval(idleTimer);
+            isIdle = false;
         }
-    });
-}, { threshold: 0.5 }).observe && Object.keys(sectionMsgs).forEach(id => {
-    const el = document.getElementById(id);
-    if (el) new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
+        clearTimeout(scrollTimer);
+        setState('scrolling', pick(messages.scrolling));
+        scrollTimer = setTimeout(() => goIdle(), 1800);
+    }
+
+    window.addEventListener('scroll', onScrolling, { passive: true });
+
+    const sectionMsgs = {
+        work:         messages.projects,
+        achievements: messages.achievements,
+        contact:      messages.contact,
+    };
+
+    Object.keys(sectionMsgs).forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
                 showBubble(pick(sectionMsgs[id]), 3200);
                 if (id === 'achievements') {
                     guy.classList.add('excited');
-                    setTimeout(() => { guy.classList.remove('excited'); }, 2200);
+                    setTimeout(() => guy.classList.remove('excited'), 2200);
                 }
                 if (id === 'contact') {
                     setState('wave', pick(messages.contact));
                     setTimeout(() => goIdle(), 3200);
                 }
-            }
-        });
-    }, { threshold: 0.5 }).observe(el);
-});
+            });
+        }, { threshold: 0.4 }).observe(el);
+    });
 
-// Start idle on load
-setTimeout(() => goIdle(), 800);
+    setTimeout(() => goIdle(), 800);
+})();
