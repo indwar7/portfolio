@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On-Device ML: Running AI Without the Cloud — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">AI & Machine Learning</span>
+        <span class="article-date">Apr 2026</span>
+        <span class="article-read-time">6 min read</span>
+    </div>
+
+    <h1 class="article-title">On-Device ML: Running AI Without the Cloud</h1>
+    <p class="article-subtitle">Lucy AR runs garment try-on inference directly on your phone — no server, no latency. Here's how TFLite model quantisation, body landmark tracking, and on-device AI work together.</p>
+
+    <div class="article-body">
+
+        <p>Most AI features in consumer apps work like this: your photo goes to a server, a GPU cluster processes it, the result comes back. It works, but it introduces latency, requires an internet connection, and sends your data somewhere you can't see.</p>
+
+        <p>Lucy AR takes a different approach. Every frame of your camera feed is processed <strong>on your device</strong>, in real time, with no server involved. The result is instant response, full privacy, and an experience that works even without a connection.</p>
+
+        <p>Here's how we built it — and what on-device ML actually involves.</p>
+
+        <h2>What Is TFLite?</h2>
+
+        <p>TensorFlow Lite is a trimmed-down version of TensorFlow designed to run on mobile devices. A standard TensorFlow model trained on cloud GPUs can be hundreds of megabytes and require significant compute. TFLite converts those models into a format optimised for mobile CPUs and GPUs — smaller, faster, lower power.</p>
+
+        <p>The conversion process involves two key steps:</p>
+
+        <ul>
+            <li><strong>Quantisation</strong> — replacing 32-bit floating point weights with 8-bit integers. This reduces model size by ~4x and speeds up inference significantly, with minimal accuracy loss for most visual tasks.</li>
+            <li><strong>Operator fusion</strong> — combining multiple operations (convolution + batch norm + activation) into single optimised kernels that run faster on mobile hardware.</li>
+        </ul>
+
+        <p>For Lucy, we used a quantised BlazePose model for body landmark detection — 8-bit quantised, running at 15–30 FPS on mid-range Android devices.</p>
+
+        <h2>Body Landmark Detection</h2>
+
+        <p>Tracking a body in a video stream requires detecting the same anatomical points — shoulders, hips, wrists, ankles — in every frame, even as the person moves, rotates, or changes lighting conditions.</p>
+
+        <p>BlazePose detects <strong>33 body landmarks</strong> per frame, each with an x/y coordinate and a confidence score. High confidence means the model is certain that landmark is visible; low confidence means it's occluded or out of frame.</p>
+
+        <p>We used confidence scores to handle partial visibility gracefully. If a shoulder landmark dropped below 0.6 confidence, we blended its position from the previous frame rather than snapping to an uncertain prediction. This eliminated a lot of the jitter that makes AR overlays look broken.</p>
+
+        <h2>The Jitter Problem</h2>
+
+        <p>Raw landmark predictions are noisy. Even on a stationary person, the detected shoulder position might vary by a few pixels frame-to-frame — enough to make an overlaid garment visibly shake. This is called jitter, and it's the difference between an AR experience that feels real and one that feels like a prototype.</p>
+
+        <p>We solved it with <strong>velocity-adaptive smoothing</strong>. The smoothing factor adapts based on how fast the landmark is moving:</p>
+
+        <ul>
+            <li>Fast movement → low smoothing (follow the motion closely, don't lag)</li>
+            <li>Slow movement or stationary → high smoothing (average over more frames, eliminate noise)</li>
+        </ul>
+
+        <p>This is a simple idea but surprisingly effective. The garment overlay moves fluidly with the user, snaps responsively to fast gestures, and holds steady during slow movements.</p>
+
+        <h2>GPU Acceleration</h2>
+
+        <p>TFLite supports GPU delegation — offloading inference from the CPU to the device's GPU. On most Android devices, this gives a 2–4x speedup for vision models, which is the difference between 8 FPS (unusable) and 20+ FPS (smooth).</p>
+
+        <p>We initialised the TFLite interpreter with the GPU delegate on app launch and fell back to CPU if the delegate wasn't available. This fallback is important: not all devices support GPU delegation, and you don't want the app to crash on older hardware.</p>
+
+        <blockquote>On-device AI isn't about replacing the cloud. It's about the class of experiences that are only possible when the latency is zero.</blockquote>
+
+        <p>The future of mobile AI is on-device. As models get smaller and mobile chips get faster, more of what currently requires a cloud server will run locally. Privacy-preserving, instant, always-available — that's where the interesting work is happening.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Mobile & AI Developer</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>

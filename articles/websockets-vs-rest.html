@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSockets vs REST — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">Systems Design</span>
+        <span class="article-date">Feb 2026</span>
+        <span class="article-read-time">5 min read</span>
+    </div>
+
+    <h1 class="article-title">WebSockets vs REST: What We Learned Building a Live Trading App</h1>
+    <p class="article-subtitle">Peanut Trading App needed real-time price feeds for 500+ concurrent users. Here's when WebSockets beat REST, how we managed connection state, and what broke first under load.</p>
+
+    <div class="article-body">
+
+        <p>When we started building the Peanut Trading App, we defaulted to REST for everything. It was familiar, well-understood, and easy to debug. Within two weeks, we ripped out half of it and replaced it with WebSockets. Here's what forced that decision — and what we'd do differently from day one.</p>
+
+        <h2>The Problem with Polling</h2>
+
+        <p>Commodity prices change by the second. Our initial implementation polled a REST endpoint every 2 seconds to fetch the latest prices. With 500 concurrent users, that's <strong>250 requests per second</strong> to a single endpoint, each requiring a database read and JSON serialisation.</p>
+
+        <p>The server held up. The user experience didn't. Two-second polling means a user might see a price that's already 1.9 seconds stale — in a trading context, that's the difference between a profitable order and a missed opportunity.</p>
+
+        <p>We needed sub-second updates. REST polling can't deliver that without destroying the server.</p>
+
+        <h2>How WebSockets Work (Simply)</h2>
+
+        <p>REST is request-response: the client asks, the server answers, the connection closes. Every request carries full HTTP headers — typically 500–800 bytes of overhead, even if the payload is 20 bytes of price data.</p>
+
+        <p>WebSockets establish a <strong>persistent connection</strong> between client and server. Once open, either side can push data to the other at any time — no request overhead, no repeated handshakes. A price update becomes a tiny JSON frame pushed instantly to every connected client.</p>
+
+        <h2>What We Built</h2>
+
+        <p>Our WebSocket server maintained a single shared price feed (sourced from an upstream commodity data API). When a new price arrived, it broadcast to all connected clients in a single pass — O(n) with minimal overhead per client.</p>
+
+        <p>Connection state was the hard part. WebSocket connections drop — bad signal, app backgrounding, server restarts. We implemented:</p>
+
+        <ul>
+            <li>Client-side automatic reconnection with exponential backoff</li>
+            <li>A <code>lastPrice</code> cache so reconnecting clients get the current price immediately</li>
+            <li>Heartbeat ping/pong every 30 seconds to detect silently dead connections</li>
+            <li>Server-side connection registry to clean up stale connections</li>
+        </ul>
+
+        <h2>What Broke First</h2>
+
+        <p>Under load testing with 500 simulated connections, two things failed:</p>
+
+        <p><strong>File descriptor limits.</strong> Each WebSocket connection holds an open file descriptor. Linux defaults to 1,024 per process. We hit this ceiling immediately and got connection refused errors. Fix: raise the limit in system config (<code>ulimit -n 65536</code>) and configure the same in Docker.</p>
+
+        <p><strong>Goroutine leaks.</strong> Our Go server spun up a goroutine per connection for reading. When connections dropped without a clean close, the goroutines leaked. Fix: context cancellation tied to connection lifecycle, with a timeout on reads.</p>
+
+        <h2>When to Use Each</h2>
+
+        <p>After building both sides of this, the decision is simple:</p>
+
+        <ul>
+            <li>Use <strong>REST</strong> for: creating orders, fetching account data, any request-response interaction where the client drives the timing</li>
+            <li>Use <strong>WebSockets</strong> for: live price feeds, notifications, chat, anything where the server needs to push to the client unprompted</li>
+        </ul>
+
+        <blockquote>WebSockets aren't better than REST. They solve a different problem. Use the right tool for the direction data flows.</blockquote>
+
+        <p>In Peanut, we ended up with a hybrid: WebSockets for price feeds and order status updates, REST for everything else. That's the architecture most real trading platforms use — for good reason.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Mobile & Backend Developer</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>

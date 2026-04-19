@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How We Track 33 Body Landmarks in Real Time on a Phone — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">Computer Vision</span>
+        <span class="article-date">Mar 2026</span>
+        <span class="article-read-time">5 min read</span>
+    </div>
+
+    <h1 class="article-title">How We Track 33 Body Landmarks in Real Time on a Phone</h1>
+    <p class="article-subtitle">A beginner-friendly breakdown of how ML Kit and TFLite work together to detect body pose, handle jitter with velocity-adaptive smoothing, and render garments that move with you.</p>
+
+    <div class="article-body">
+
+        <p>When you wave your hand in front of a camera, how does a computer know it's a hand — and not a leaf, or a shadow? When you try on a virtual shirt in Lucy AR, how does the app know where your shoulders are, how wide your body is, and which direction you're facing?</p>
+
+        <p>The answer is <strong>pose estimation</strong> — and it's one of the more elegant problems in computer vision. Here's how it works, in plain terms.</p>
+
+        <h2>What a Landmark Is</h2>
+
+        <p>A body landmark is a specific anatomical point: the tip of your nose, the centre of your left shoulder, your right wrist. BlazePose — the model we use in Lucy — detects 33 of these points simultaneously in every camera frame.</p>
+
+        <p>Each landmark is represented as three numbers: x position, y position (both as fractions of the frame width/height), and a visibility score from 0 to 1. A visibility score of 0.9 means the model is highly confident that landmark is visible. A score of 0.2 means it's probably occluded — hidden behind another body part or out of frame.</p>
+
+        <p>33 landmarks, 3 numbers each, 30 times per second. That's 2,970 numbers your phone is computing every second just to know where your body is.</p>
+
+        <h2>How the Model Finds You</h2>
+
+        <p>Pose estimation runs in two stages:</p>
+
+        <p><strong>Stage 1: Person detection.</strong> A lightweight detector scans the full frame to find the bounding box around a person. This runs at lower resolution for speed — it just needs to find where you are, not precise details.</p>
+
+        <p><strong>Stage 2: Landmark detection.</strong> The region inside the bounding box is cropped and fed to a higher-resolution landmark model. This model outputs the 33 landmarks with their positions and confidence scores.</p>
+
+        <p>Running stage 2 only on the cropped region — rather than the full frame — is what makes real-time performance possible on a phone. You're doing expensive computation on a small patch, not the whole image.</p>
+
+        <h2>The Jitter Problem (and the Fix)</h2>
+
+        <p>Raw landmark predictions shake. Even if you stand perfectly still, the model's output for your shoulder position will vary by a few pixels frame-to-frame. This is normal — neural networks aren't deterministic at the pixel level.</p>
+
+        <p>For most applications, this doesn't matter. For AR, it's fatal. A garment that wobbles by 5 pixels per frame looks broken. Users immediately notice.</p>
+
+        <p>The naive fix is a moving average: take the last N frames and average their positions. This smooths the jitter, but introduces lag — fast movements feel sluggish because the average takes time to catch up.</p>
+
+        <p>Our fix was <strong>velocity-adaptive smoothing</strong>. We track how fast each landmark is moving frame-to-frame. When movement is fast, we reduce the smoothing factor — following the motion closely. When movement is slow or stopped, we increase smoothing — averaging more frames to eliminate noise.</p>
+
+        <p>In code, it's roughly:</p>
+
+        <p><code>speed = distance(current, previous) / frame_time</code><br>
+        <code>alpha = max(0.1, min(0.9, 1 - speed * 0.05))</code><br>
+        <code>smoothed = alpha * previous + (1 - alpha) * current</code></p>
+
+        <p>Simple exponential smoothing with a dynamic alpha. The result: garments that hold steady when you're still, and snap responsively when you move.</p>
+
+        <h2>Garment Occlusion</h2>
+
+        <p>The final challenge: a realistic garment overlay needs to go <em>behind</em> your arms when you cross them, not on top. This is the occlusion problem.</p>
+
+        <p>We solved it with body segmentation — a second model that classifies each pixel as "body" or "background". By rendering the garment layer below the body silhouette, we get natural occlusion: arms in front of the shirt, not behind it.</p>
+
+        <blockquote>Computer vision on mobile isn't magic — it's a chain of small, clever approximations, each fast enough to run 30 times per second.</blockquote>
+
+        <p>Every technique here — two-stage detection, confidence-based blending, adaptive smoothing, segmentation-based occlusion — is a practical engineering trade-off between accuracy and speed. Real-time AR is the art of being good enough, fast enough, consistently enough.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Mobile & AI Developer</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From OTP to Payout — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">Backend Engineering</span>
+        <span class="article-date">Feb 2026</span>
+        <span class="article-read-time">5 min read</span>
+    </div>
+
+    <h1 class="article-title">From OTP to Payout: How We Built Auth and Wallets in SafaiPay</h1>
+    <p class="article-subtitle">A walkthrough of the full auth-to-withdrawal flow — Firebase OTP, JWT sessions, and RazorpayX UPI payouts — explained for developers building their first fintech feature.</p>
+
+    <div class="article-body">
+
+        <p>Fintech features sound complicated. In practice, they're a chain of well-defined steps: verify identity, issue a session, track a balance, pay out. The complexity is in the details — handling failures gracefully, securing every layer, and never letting money go missing.</p>
+
+        <p>Here's how we built the complete auth-to-payout flow in SafaiPay, from a user's first tap to rupees in their UPI wallet.</p>
+
+        <h2>Step 1: OTP Authentication</h2>
+
+        <p>We chose phone-based OTP authentication for one reason: in India, everyone has a phone number. Email-based auth would exclude a significant portion of our target users.</p>
+
+        <p>Firebase Authentication handles OTP delivery and verification. The flow is straightforward:</p>
+
+        <ol>
+            <li>User enters phone number → Firebase sends OTP via SMS</li>
+            <li>User enters OTP → Firebase verifies and returns a Firebase ID token</li>
+            <li>Our Go backend verifies the Firebase ID token using the Firebase Admin SDK</li>
+            <li>On successful verification, we issue our own JWT session token</li>
+        </ol>
+
+        <p>Why issue our own JWT instead of using Firebase tokens everywhere? Firebase tokens expire in one hour and require constant refreshes. Our JWT gives us full control over session duration, claims, and revocation — and removes a Firebase dependency from every authenticated request to our Go backend.</p>
+
+        <h2>Step 2: JWT Sessions</h2>
+
+        <p>Our JWT payload contains three things: user ID, phone number, and expiry. We sign tokens with a secret key using HS256. Every protected endpoint in our Go backend validates the JWT before processing the request.</p>
+
+        <p>Token refresh happens silently: when a token is within 24 hours of expiry, the app requests a new one in the background. Users never see a login screen after their first auth.</p>
+
+        <p>Revocation — for logout or suspicious activity — is handled by storing a <code>token_version</code> integer per user in PostgreSQL. Every JWT includes the version at issuance; a version mismatch on validation invalidates the token instantly.</p>
+
+        <h2>Step 3: Wallet and Balance</h2>
+
+        <p>Every user has a wallet record in PostgreSQL. Points earned from civic actions credit the wallet; withdrawals debit it. Every transaction is recorded in an immutable ledger table — no balance is ever updated without a corresponding transaction record.</p>
+
+        <p>Critically, balance updates use PostgreSQL's <code>FOR UPDATE</code> row locking to prevent race conditions. If two point awards arrive simultaneously, the second waits for the first to complete — the balance is never double-counted or lost.</p>
+
+        <h2>Step 4: UPI Payout via RazorpayX</h2>
+
+        <p>When a user requests a withdrawal, we:</p>
+
+        <ol>
+            <li>Debit the wallet immediately (locking the funds)</li>
+            <li>Create a payout via the RazorpayX API</li>
+            <li>Store the RazorpayX payout ID and set status to <code>pending</code></li>
+            <li>Listen for the webhook from RazorpayX confirming settlement</li>
+            <li>On success webhook: mark payout <code>completed</code></li>
+            <li>On failure webhook: reverse the wallet debit and notify the user</li>
+        </ol>
+
+        <p>The webhook-driven approach is critical. Never mark a payout as complete based on the API response alone — network failures between your server and RazorpayX can cause the API to succeed on their end but fail to return a response to you. Webhooks confirm actual settlement.</p>
+
+        <blockquote>In fintech, optimism is a bug. Assume every step can fail, and design the recovery path before the happy path.</blockquote>
+
+        <p>The full stack — Firebase OTP, Go JWT backend, PostgreSQL ledger, RazorpayX payouts — took about three weeks to build and test properly. The testing took longer than the building. That's the right ratio for anything involving money.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Full-Stack Mobile Developer</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Keep a Trading App Alive When the Network Dies — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">Mobile Systems</span>
+        <span class="article-date">Jan 2026</span>
+        <span class="article-read-time">4 min read</span>
+    </div>
+
+    <h1 class="article-title">How to Keep a Trading App Alive When the Network Dies</h1>
+    <p class="article-subtitle">Offline caching in a live trading context is tricky — stale prices are dangerous. Here's how SQLite caching and error boundaries kept Peanut crash-free under poor connectivity.</p>
+
+    <div class="article-body">
+
+        <p>Offline caching is standard advice for mobile apps. But in a trading app, it comes with a specific danger: <strong>stale prices can cause real financial harm.</strong> If a user places an order based on a price that's 5 minutes old, they might buy at a rate they never intended.</p>
+
+        <p>This made the Peanut Trading App's offline strategy fundamentally different from a typical offline-first app. We weren't caching for continuity — we were caching for resilience, with strict rules about what could and couldn't be done without a live connection.</p>
+
+        <h2>Two Types of Data, Two Strategies</h2>
+
+        <p>We split the app's data into two categories:</p>
+
+        <p><strong>Safe to cache:</strong> Order history, account balance, transaction records, commodity metadata (names, units, descriptions). This data changes infrequently and doesn't affect the safety of a trade decision.</p>
+
+        <p><strong>Never cache for action:</strong> Live prices, current bid/ask spreads, active order status. Showing a user a cached price and letting them trade on it is dangerous. We chose to show stale prices clearly labelled as stale — and disable the Buy/Sell buttons entirely until a live price was confirmed.</p>
+
+        <h2>The SQLite Layer</h2>
+
+        <p>All safe data was stored in SQLite on the device. On app launch, we loaded from SQLite immediately — giving users instant access to their history and account info — while simultaneously fetching fresh data in the background.</p>
+
+        <p>The pattern is called <strong>stale-while-revalidate</strong>: show cached data now, update it silently when fresh data arrives. The UI updates smoothly when the network response comes in, without a loading spinner blocking the user.</p>
+
+        <p>Every cached record included a <code>cached_at</code> timestamp. Any price data older than 60 seconds was considered stale and displayed with a warning banner.</p>
+
+        <h2>Error Boundaries: Failing Without Crashing</h2>
+
+        <p>Network failures in Flutter throw exceptions. Unhandled exceptions crash apps. We wrapped every network call in explicit error handling with three outcomes:</p>
+
+        <ol>
+            <li><strong>Success</strong> — update the UI with fresh data</li>
+            <li><strong>Network error</strong> — show cached data with a "Offline" indicator, disable trade actions</li>
+            <li><strong>Server error</strong> — show an error message, keep cached data visible, offer a retry button</li>
+        </ol>
+
+        <p>The key principle: <strong>never show a blank screen.</strong> Users always see something — even if it's clearly marked as cached or outdated. A blank screen feels broken; a stale-but-labelled screen feels honest.</p>
+
+        <h2>Order Submission Under Poor Connectivity</h2>
+
+        <p>When a user places an order on a weak connection, the submission might time out before we get a response. Did the order go through? We don't know.</p>
+
+        <p>We handled this with idempotency keys: every order submission included a UUID generated on the client. If the same UUID hit the server twice (due to a retry), the second was ignored. The user could safely retry a timed-out submission without risk of a duplicate order.</p>
+
+        <blockquote>In trading, a confusing error message is safer than a confident wrong answer. When in doubt, show uncertainty — don't hide it.</blockquote>
+
+        <p>The result: zero crashes from network errors across 2,000+ daily transactions. Users on patchy connections could browse their history and account data freely — they just couldn't trade until the connection was confirmed live. That constraint, clearly communicated, is the honest design.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Mobile App Developer</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>

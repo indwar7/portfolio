@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Points Economy — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">Product & UX</span>
+        <span class="article-date">Mar 2026</span>
+        <span class="article-read-time">5 min read</span>
+    </div>
+
+    <h1 class="article-title">Building a Points Economy: How Gamification Drives Real Civic Behaviour</h1>
+    <p class="article-subtitle">SafaiPay rewards users for reporting garbage and booking pickups. Here's how we designed atomic transactions, Redis leaderboards, and badge psychology to make civic participation feel worth doing.</p>
+
+    <div class="article-body">
+
+        <p>Getting people to report garbage sounds easy. In practice, it requires overcoming one of the hardest problems in product design: making a tedious, unrewarded action feel worth doing — every single day.</p>
+
+        <p>SafaiPay is a waste management platform where users report garbage, book pickups, and earn redeemable points. The technical challenge was building a rewards economy that felt fair, fast, and fun. The design challenge was making civic behaviour addictive.</p>
+
+        <h2>Why Points Alone Don't Work</h2>
+
+        <p>Points without context are meaningless. A user earning 50 points doesn't know if that's good or bad, fast or slow, worth anything at all. The moment you add a leaderboard, a badge, or a payout, the points become real.</p>
+
+        <p>We layered three mechanisms on top of each other:</p>
+
+        <ol>
+            <li><strong>Points</strong> — earned for every action: reporting, booking, completing a pickup</li>
+            <li><strong>Badges</strong> — 15 milestone badges for behavioural streaks and thresholds</li>
+            <li><strong>Leaderboard</strong> — real-time ranking against other users in your area</li>
+        </ol>
+
+        <p>Each layer addresses a different psychological need. Points give immediate feedback. Badges mark identity ("I'm a Cleanup Champion"). Leaderboards create social competition.</p>
+
+        <h2>The Technical Problem: Consistency</h2>
+
+        <p>Points economies have a nasty failure mode: double-crediting. A user taps "Report Garbage", the request times out, they tap again — and earn points twice. At scale, this breaks trust and the economy.</p>
+
+        <p>We solved this with <strong>atomic transactions in PostgreSQL</strong>. Every point award was wrapped in a database transaction that checked for idempotency before crediting. Each action was assigned a unique event ID; the transaction would reject a second credit for the same event ID. No double-spending, ever.</p>
+
+        <h2>Redis Leaderboards: O(log N) at Any Scale</h2>
+
+        <p>Leaderboards are a classic engineering problem. A naive implementation — sort all users by points on every request — is O(N log N) and collapses under load.</p>
+
+        <p>Redis Sorted Sets solve this elegantly. Every point award updates the user's score in a sorted set with a single <code>ZADD</code> command. Fetching the top 100 users is a single <code>ZREVRANGE</code> call — O(log N) regardless of total user count.</p>
+
+        <p>The leaderboard updates in real time. When a user earns points, their rank changes instantly. That immediacy is what makes the competition feel alive.</p>
+
+        <h2>Payouts: When Points Become Money</h2>
+
+        <p>The final layer — and the one that makes SafaiPay different from most gamified apps — is that points convert to real money via RazorpayX UPI payouts. This changes everything psychologically: the rewards are no longer abstract, they're real rupees in your wallet.</p>
+
+        <p>We implemented wallet withdrawals with a minimum threshold (to keep transaction costs manageable) and a 24-hour processing window. The UPI integration used RazorpayX's payout API with webhook confirmation to mark withdrawals as complete only after settlement.</p>
+
+        <blockquote>When civic participation pays — literally — people show up.</blockquote>
+
+        <p>The lesson from SafaiPay: gamification works best when the rewards ladder from intrinsic (satisfaction, identity) to extrinsic (money). Start with points and badges to build habit. Add real payouts to make it stick.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Full-Stack Mobile Developer</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>

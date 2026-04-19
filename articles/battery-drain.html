@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Your App Is Draining Battery — And How to Fix It — Abhaydeep Indwar</title>
+    <link rel="stylesheet" href="article.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="nav">
+    <a href="../index.html" class="nav-home">Abhaydeep Indwar</a>
+    <a href="../index.html#writing" class="nav-back">← All Articles</a>
+</nav>
+
+<div class="article-wrap">
+    <div class="article-meta">
+        <span class="article-tag">Performance Engineering</span>
+        <span class="article-date">Mar 2026</span>
+        <span class="article-read-time">4 min read</span>
+    </div>
+
+    <h1 class="article-title">Why Your App Is Draining Battery — And How to Fix It</h1>
+    <p class="article-subtitle">GPS is the biggest battery killer in mobile apps. Here's the adaptive sampling strategy we used in TrackMatee to cut consumption by 35% without losing accuracy.</p>
+
+    <div class="article-body">
+
+        <p>Users notice two things immediately: an app that's slow, and an app that kills their battery. The second one gets you uninstalled.</p>
+
+        <p>When we built TrackMatee — a continuous GPS trip detection platform — battery life was our most critical constraint. The app had to run in the background for hours, tracking movement across 50+ cities, while barely touching the battery. Here's what we learned.</p>
+
+        <h2>The Three Main Battery Killers</h2>
+
+        <p>In any mobile app, battery drain comes from three main sources:</p>
+
+        <ol>
+            <li><strong>GPS / Location services</strong> — the biggest offender by far</li>
+            <li><strong>Network requests</strong> — especially frequent polling</li>
+            <li><strong>Wake locks</strong> — keeping the CPU alive when it should sleep</li>
+        </ol>
+
+        <p>A naive GPS implementation — polling every second, always-on — can drain a modern phone in under 4 hours. For a platform processing 50,000+ trips daily, that's a non-starter.</p>
+
+        <h2>Adaptive Sampling: The Fix</h2>
+
+        <p>The core insight is simple: <strong>you don't need the same GPS precision when someone is sitting still as when they're moving at 80 km/h.</strong></p>
+
+        <p>We built an adaptive sampler that adjusts polling frequency based on detected movement:</p>
+
+        <ul>
+            <li>Speed &gt; 20 km/h → sample every 3 seconds</li>
+            <li>Speed 5–20 km/h → sample every 10 seconds</li>
+            <li>Speed &lt; 5 km/h → sample every 30 seconds</li>
+            <li>Stationary for 2+ minutes → pause GPS, switch to activity detection</li>
+        </ul>
+
+        <p>The activity detection part is key. Instead of keeping GPS alive during stops, we used the device's accelerometer (via Android's Activity Recognition API) to detect when movement resumed — then re-enabled GPS. The accelerometer uses a fraction of the battery that GPS does.</p>
+
+        <h2>Batched Writes, Not Constant Writes</h2>
+
+        <p>Every database write wakes the CPU slightly. Constant small writes — one per GPS event — add up. We batched location events into groups of 10–20 and wrote them in a single SQLite transaction. Same data, a fraction of the CPU cost.</p>
+
+        <p>Network syncs followed the same principle: rather than uploading each event immediately, we queued them locally and flushed in batches when on Wi-Fi or strong signal. This also eliminated the constant radio wake-ups that kill battery on cellular.</p>
+
+        <h2>The Result</h2>
+
+        <p>Combining adaptive sampling, accelerometer-based pause/resume, batched SQLite writes, and opportunistic network sync, we reduced battery consumption by <strong>35%</strong> compared to our initial always-on implementation — with no loss in trip detection accuracy.</p>
+
+        <blockquote>The best performance optimisation is the work you don't do. Don't poll GPS when the user is sitting still.</blockquote>
+
+        <p>These patterns apply beyond GPS. Any app that runs background services — delivery tracking, health monitoring, location sharing — can apply the same principle: do less work when less precision is needed, and batch everything you can.</p>
+
+    </div>
+
+    <div class="article-footer">
+        <div class="article-author">Written by <strong>Abhaydeep Indwar</strong> — Mobile App Developer, SIH 2025 Winner</div>
+        <a href="../index.html#writing" class="back-link">← Back to Writing</a>
+    </div>
+</div>
+
+<footer>
+    <span>©2026 Abhaydeep Indwar</span>
+    <a href="../index.html">Portfolio</a>
+</footer>
+</body>
+</html>
