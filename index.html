@@ -3,610 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhaydeep Indwar - Mobile App Developer</title>
+    <title>Abhaydeep Indwar | Mobile App Developer</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">Abhaydeep</div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-toggle" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </div>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-logo">AI</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
         </div>
+        <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section id="home" class="hero">
-        <div class="particles" id="particles"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="badge">🏆 SIH 2025 Winner</div>
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="gradient-text">Abhaydeep Indwar</span>
-                    </h1>
-                    <div class="typing-container">
-                        <span class="typing-text" id="typingText"></span>
-                        <span class="cursor">|</span>
-                    </div>
-                    <p class="hero-subtitle">
-                        Mobile App Developer | CS Engineer @ AKGEC | Intern @ Unfluke
-                    </p>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <span class="stat-number" data-target="500">0</span>+
-                            <span class="stat-label">Users</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-target="99.9">0</span>%
-                            <span class="stat-label">Uptime</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-target="40">0</span>%
-                            <span class="stat-label">Performance Boost</span>
-                        </div>
-                    </div>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-rocket"></i> View Projects
-                        </a>
-                        <a href="#" class="btn btn-secondary" download>
-                            <i class="fas fa-download"></i> Download Resume
-                        </a>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/abhayindwar" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/abhayindwar7" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:abhayindwar7@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+918279343179" class="social-link">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                    </div>
+        <div class="hero-bg-text" aria-hidden="true">ABHAYDEEP</div>
+
+        <div class="hero-inner">
+            <div class="hero-left">
+                <p class="hero-tag">Hey<span class="wave">👋</span>, I'm a Mobile App Developer</p>
+                <h1 class="hero-name">
+                    <span>ABHAYDEEP</span>
+                    <span class="green">INDWAR</span>
+                </h1>
+                <p class="hero-bio">
+                    I build fast, scalable, and user-friendly mobile apps using Flutter &amp; React Native. CS Engineer @ AKGEC (Data Science) · Intern @ Unfluke · <strong>SIH 2025 National Winner</strong>.
+                </p>
+                <div class="hero-meta">
+                    <span><i class="fas fa-map-marker-alt"></i> Ghaziabad / Bareilly, India</span>
+                    <span><i class="fas fa-trophy"></i> SIH 2025 National Winner</span>
+                    <span><i class="fas fa-graduation-cap"></i> 8.0 CGPA @ AKGEC</span>
                 </div>
-                <div class="hero-image">
-                    <div class="profile-container">
-                        <div class="glow-ring"></div>
-                        <img src="images/profile.jpg" alt="Abhaydeep Indwar" class="profile-img">
-                        <div class="floating-tech flutter">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="floating-tech firebase">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <div class="floating-tech code">
-                            <i class="fas fa-code"></i>
-                        </div>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-green">View Projects</a>
+                    <a href="mailto:abhayindwar7@gmail.com" class="btn-outline">Hire Me</a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/indwar7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/abhayindwar7" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:abhayindwar7@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+918279343179" title="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="photo-frame">
+                    <img src="images/profile.jpeg" alt="Abhaydeep Indwar" class="profile-photo">
+                    <div class="photo-border"></div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <span class="stat-n">2K+</span>
+                        <span class="stat-l">Users</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-n">50K+</span>
+                        <span class="stat-l">Daily Trips</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-n">40%</span>
+                        <span class="stat-l">Perf Boost</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-            <span>Scroll Down</span>
+
+        <div class="scroll-hint">
+            <span class="scroll-line"></span>
+            <span>SCROLL</span>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Get To Know Me</span>
-                <h2 class="section-title">About Me</h2>
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+        <div class="section-label">/ ABOUT</div>
+        <div class="about-grid">
+            <div class="about-heading">
+                <h2>Creating,<br>Exploring &amp;<br>Enjoying<br>Every Single Day.</h2>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="lead">
-                        Hi, I'm <strong>Abhaydeep Indwar</strong> — I don't just build apps, I craft experiences that bridge data science and user needs.
-                    </p>
-                    <p>
-                        As a Computer Science student at AKGEC specializing in Data Science, I've led teams to win <strong>Smart India Hackathon 2025</strong> at the national level. Currently interning at <strong>Unfluke</strong>, I work with cutting-edge technologies like Flutter, React Native, and Firebase.
-                    </p>
-                    <p>
-                        My approach combines analytical thinking with creative problem-solving. Whether it's optimizing battery consumption by 35% or building real-time trading platforms for 500+ users, I focus on delivering results that matter.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <i class="fas fa-trophy"></i>
-                            <span>SIH 2025 Winner</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-users"></i>
-                            <span>Team Leader</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>8.0 CGPA @ AKGEC</span>
-                        </div>
-                        <div class="highlight">
-                            <i class="fas fa-certificate"></i>
-                            <span>IBM Certified</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-phone">
-                    <div class="phone-mockup">
-                        <div class="phone-screen">
-                            <img src="images/trackmatee.png" alt="App Screenshot" class="app-screenshot">
-                        </div>
-                    </div>
+            <div class="about-body">
+                <p>I'm a Computer Science student at <strong>AKGEC, Ghaziabad</strong> specialising in Data Science (graduating May 2027). I led a team of 5 to win <strong>Smart India Hackathon 2025</strong> at the national level — building TrackMatee for India's Ministry of Road Transport &amp; Highways.</p>
+                <p>Currently interning at <strong>Unfluke, Noida</strong>, shipping production React Native apps daily. I've built everything from real-time AR try-on platforms to waste management ecosystems with Go backends, Redis leaderboards, and RazorpayX payouts.</p>
+                <p>IBM Certified in Project Management &amp; Data Science. 2+ apps live on Google Play. Virtual internships at Tata, Goldman Sachs, and Accenture.</p>
+                <div class="about-chips">
+                    <span>Flutter</span><span>React Native</span><span>Firebase</span>
+                    <span>Go</span><span>PostgreSQL</span><span>Redis</span>
+                    <span>Python</span><span>TensorFlow</span><span>Docker</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">My Work</span>
-                <h2 class="section-title">Featured Projects</h2>
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+        <div class="section-label">/ PROJECTS</div>
+        <div class="section-title-row">
+            <h2>A SHOWCASE OF MY<br>LATEST PROJECTS</h2>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- Lucy -->
+            <div class="proj-card featured">
+                <div class="proj-badge">🔥 Latest · Mar 2026</div>
+                <div class="proj-img-wrap">
+                    <div class="proj-placeholder ar">
+                        <i class="fas fa-camera"></i>
+                        <span>AR Try-On</span>
+                    </div>
+                </div>
+                <div class="proj-info">
+                    <h3>Lucy – AR Virtual Try-On</h3>
+                    <p>Real-time AR garment try-on app with live Camera2 API feed, on-device ML inference tracking <strong>33 body landmarks</strong>, and AI-powered virtual try-on using diffusion models (IDM-VTON).</p>
+                    <div class="proj-stats-row">
+                        <span><i class="fas fa-tachometer-alt"></i> 15–30 FPS</span>
+                        <span><i class="fas fa-brain"></i> 33 Body Landmarks</span>
+                        <span><i class="fas fa-magic"></i> IDM-VTON Diffusion</span>
+                    </div>
+                    <div class="proj-tags">
+                        <span>Flutter</span><span>Camera2 API</span><span>ML Kit</span><span>TFLite</span><span>ARKit</span><span>Python</span>
+                    </div>
+                    <div class="proj-links">
+                        <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
             </div>
-            <div class="projects-grid">
-                <!-- Project 1: TrackMatee -->
-                <div class="project-card featured">
-                    <div class="project-badge">🏆 SIH Winner</div>
-                    <div class="project-image">
-                        <img src="images/trackmatee.png" alt="TrackMatee">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+
+            <!-- TrackMatee -->
+            <div class="proj-card">
+                <div class="proj-badge">🏆 SIH 2025 Winner</div>
+                <div class="proj-img-wrap">
+                    <img src="images/tradinngg.jpeg" alt="TrackMatee" onerror="this.style.display='none'">
+                    <div class="proj-placeholder"><i class="fas fa-map-marked-alt"></i></div>
+                </div>
+                <div class="proj-info">
+                    <h3>TrackMatee</h3>
+                    <p>National mobility analytics platform for MoRTH across 50+ cities. Offline-first GPS trip detection processing 50K+ daily trips with zero downtime.</p>
+                    <div class="proj-stats-row">
+                        <span><i class="fas fa-users"></i> 2K+ Users</span>
+                        <span><i class="fas fa-chart-line"></i> 40% Accuracy ↑</span>
+                        <span><i class="fas fa-battery-three-quarters"></i> 35% Battery ↓</span>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">TrackMatee</h3>
-                        <p class="project-desc">
-                            National-level GPS trip detection platform built for NATPAC. Led team of 5 developers to win Smart India Hackathon 2025.
-                        </p>
-                        <div class="project-stats">
-                            <div class="stat-item">
-                                <i class="fas fa-map-marked-alt"></i>
-                                <span>500+ Cities</span>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>40% Accuracy ↑</span>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-battery-three-quarters"></i>
-                                <span>35% Battery ↓</span>
-                            </div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">Google Maps</span>
-                            <span class="tech-tag">REST API</span>
-                        </div>
+                    <div class="proj-tags">
+                        <span>Flutter</span><span>Firebase</span><span>Google Maps</span><span>SQLite</span>
+                    </div>
+                    <div class="proj-links">
+                        <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i> Code</a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Project 2: Trading App -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/trading-app.png" alt="Trading App">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+            <!-- SafaiPay -->
+            <div class="proj-card">
+                <div class="proj-img-wrap">
+                    <div class="proj-placeholder"><i class="fas fa-recycle"></i></div>
+                </div>
+                <div class="proj-info">
+                    <h3>SafaiPay</h3>
+                    <p>End-to-end waste management &amp; rewards platform. Go backend with 28 REST endpoints, Redis leaderboards, RazorpayX payouts, and Cloudflare R2 image storage.</p>
+                    <div class="proj-stats-row">
+                        <span><i class="fas fa-server"></i> 28 Endpoints</span>
+                        <span><i class="fas fa-medal"></i> 15 Badges</span>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Peanut Trading App</h3>
-                        <p class="project-desc">
-                            Real-time commodity trading platform with instant order execution and live market data.
-                        </p>
-                        <div class="project-stats">
-                            <div class="stat-item">
-                                <i class="fas fa-users"></i>
-                                <span>500+ Users</span>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-tachometer-alt"></i>
-                                <span>40% Faster</span>
-                            </div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
+                    <div class="proj-tags">
+                        <span>Flutter</span><span>Go</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span>
+                    </div>
+                    <div class="proj-links">
+                        <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i> Code</a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Project 3: Tourism App -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/tourism-app.png" alt="Tourism App">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+            <!-- Trading App -->
+            <div class="proj-card">
+                <div class="proj-img-wrap">
+                    <img src="images/trading.jpeg" alt="Peanut Trading App" onerror="this.style.display='none'">
+                    <div class="proj-placeholder"><i class="fas fa-chart-line"></i></div>
+                </div>
+                <div class="proj-info">
+                    <h3>Peanut Trading App</h3>
+                    <p>Live commodity trading platform with WebSocket-driven real-time price feeds. 500+ concurrent users, 2,000+ daily transactions, 40% faster Firestore processing.</p>
+                    <div class="proj-stats-row">
+                        <span><i class="fas fa-users"></i> 500+ Concurrent</span>
+                        <span><i class="fas fa-bolt"></i> 2K+ Daily Txns</span>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Sikkim Tourism App</h3>
-                        <p class="project-desc">
-                            Cross-platform tourism application covering 50+ destinations with offline maps.
-                        </p>
-                        <div class="project-stats">
-                            <div class="stat-item">
-                                <i class="fas fa-mountain"></i>
-                                <span>50+ Destinations</span>
-                            </div>
-                            <div class="stat-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>70% Stable</span>
-                            </div>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Maps SDK</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
+                    <div class="proj-tags">
+                        <span>Flutter</span><span>WebSocket</span><span>Firebase</span><span>SQLite</span>
+                    </div>
+                    <div class="proj-links">
+                        <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i> Code</a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Project 4: ML Model -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="ml-visual">
-                            <div class="accuracy-circle">
-                                <span class="percentage">85%</span>
-                                <span class="label">Accuracy</span>
-                            </div>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Heart Disease Prediction</h3>
-                        <p class="project-desc">
-                            Machine learning healthcare prediction system with interactive dashboards.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">Flutter</span>
-                        </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section skills">
+        <div class="section-label">/ SKILLS</div>
+        <div class="skills-bg-text" aria-hidden="true">SKILLS</div>
+        <div class="skills-inner">
+            <h2>TECH I<br><span class="green">MASTER</span></h2>
+            <div class="skills-cols">
+                <div class="skills-col">
+                    <h4>Mobile</h4>
+                    <div class="skill-row"><span>Flutter</span><div class="bar"><div class="fill" style="--w:95%"></div></div><span class="pct">95%</span></div>
+                    <div class="skill-row"><span>React Native</span><div class="bar"><div class="fill" style="--w:88%"></div></div><span class="pct">88%</span></div>
+                    <div class="skill-row"><span>Kotlin / Java</span><div class="bar"><div class="fill" style="--w:80%"></div></div><span class="pct">80%</span></div>
+                    <div class="skill-row"><span>State Mgmt (Bloc/Redux)</span><div class="bar"><div class="fill" style="--w:90%"></div></div><span class="pct">90%</span></div>
+                </div>
+                <div class="skills-col">
+                    <h4>Backend & Cloud</h4>
+                    <div class="skill-row"><span>Firebase</span><div class="bar"><div class="fill" style="--w:92%"></div></div><span class="pct">92%</span></div>
+                    <div class="skill-row"><span>Go (Gin)</span><div class="bar"><div class="fill" style="--w:82%"></div></div><span class="pct">82%</span></div>
+                    <div class="skill-row"><span>PostgreSQL / Redis</span><div class="bar"><div class="fill" style="--w:80%"></div></div><span class="pct">80%</span></div>
+                    <div class="skill-row"><span>REST API / WebSocket</span><div class="bar"><div class="fill" style="--w:92%"></div></div><span class="pct">92%</span></div>
+                </div>
+                <div class="skills-col">
+                    <h4>Languages & AI</h4>
+                    <div class="skill-row"><span>Dart</span><div class="bar"><div class="fill" style="--w:95%"></div></div><span class="pct">95%</span></div>
+                    <div class="skill-row"><span>Python</span><div class="bar"><div class="fill" style="--w:85%"></div></div><span class="pct">85%</span></div>
+                    <div class="skill-row"><span>JavaScript</span><div class="bar"><div class="fill" style="--w:82%"></div></div><span class="pct">82%</span></div>
+                    <div class="skill-row"><span>TensorFlow / TFLite</span><div class="bar"><div class="fill" style="--w:78%"></div></div><span class="pct">78%</span></div>
+                </div>
+                <div class="skills-col tools">
+                    <h4>Tools & Infra</h4>
+                    <div class="tool-chips">
+                        <span>Git & GitHub</span>
+                        <span>Docker</span>
+                        <span>Android Studio</span>
+                        <span>Xcode</span>
+                        <span>Figma</span>
+                        <span>Postman</span>
+                        <span>VS Code</span>
+                        <span>Google Play Console</span>
+                        <span>CI/CD</span>
+                        <span>Railway</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">My Arsenal</span>
-                <h2 class="section-title">Tech I Master</h2>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section experience">
+        <div class="section-label">/ EXPERIENCE</div>
+        <h2 class="exp-heading">MY <span class="green">JOURNEY</span></h2>
+        <div class="timeline">
+
+            <div class="tl-item">
+                <div class="tl-year">Now</div>
+                <div class="tl-dot green"></div>
+                <div class="tl-content">
+                    <span class="tl-badge current">Current</span>
+                    <h3>App Developer Intern</h3>
+                    <h4>Unfluke · Noida, India · Dec 2025 – Present</h4>
+                    <p>Built and maintained cross-platform production apps with React Native serving 100+ DOMs. Integrated RESTful APIs reducing server response time by 30%. Implemented Redux state management improving page load times by 40%.</p>
+                </div>
             </div>
-            <div class="skills-grid">
-                <!-- Mobile Development -->
-                <div class="skill-category">
-                    <div class="category-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile Development</h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Flutter</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>React Native</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Kotlin</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Backend & Cloud -->
-                <div class="skill-category">
-                    <div class="category-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Backend & Cloud</h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Firebase</span>
-                                <span>92%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 92%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>REST API</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>GraphQL</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="tl-item">
+                <div class="tl-year">2026</div>
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                    <h3>Full-Stack Mobile App Developer</h3>
+                    <h4>SafaiPay – Waste Management & Rewards Platform · Jan 2026 – Mar 2026</h4>
+                    <p>Built production Go backend (28 REST endpoints), PostgreSQL, Redis cache, and Flutter frontend (10+ screens). Firebase OTP + JWT auth, 15 gamified badges, Redis leaderboards, wallet payouts via RazorpayX. Deployed via Docker on Railway.</p>
                 </div>
+            </div>
 
-                <!-- Data Science -->
-                <div class="skill-category">
-                    <div class="category-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Data Science</h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Python</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>TensorFlow</span>
-                                <span>82%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 82%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Data Analysis</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-progress">
-                                <div class="skill-fill" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="tl-item">
+                <div class="tl-year">2025</div>
+                <div class="tl-dot green"></div>
+                <div class="tl-content">
+                    <span class="tl-badge winner">🏆 SIH 2025 National Winner</span>
+                    <h3>App Developer & Team Lead</h3>
+                    <h4>TrackMatee · Smart India Hackathon · Sep 2025 – Dec 2025</h4>
+                    <p>Led 5 developers to build national mobility analytics platform (Flutter + Firebase) across 50+ cities serving 2K+ users. 40% accuracy gain, 99.9% data integrity, 35% battery reduction. Processed 50,000+ trips daily.</p>
                 </div>
+            </div>
 
-                <!-- Tools -->
-                <div class="skill-category">
-                    <div class="category-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Tools & Technologies</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
-                        <span class="skill-tag">Android Studio</span>
-                        <span class="skill-tag">Xcode</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Postman</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Firebase Console</span>
-                    </div>
+            <div class="tl-item">
+                <div class="tl-year">2025</div>
+                <div class="tl-dot"></div>
+                <div class="tl-content">
+                    <h3>Frontend App Developer</h3>
+                    <h4>Peanut Trading App · Jun 2025 – Jul 2025</h4>
+                    <p>Real-time commodity trading platform with WebSocket price feeds and Firebase order management. 500+ concurrent users, 2,000+ daily transactions, 40% faster Firestore processing with SQLite offline caching.</p>
                 </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+        <div class="section-label">/ CONTACT</div>
+        <div class="contact-bg-text" aria-hidden="true">CONTACT</div>
+        <div class="contact-inner">
+            <div class="contact-left">
+                <h2>LET'S<br><span class="green">WORK</span><br>TOGETHER.</h2>
+                <div class="contact-details">
+                    <a href="mailto:abhayindwar7@gmail.com"><i class="fas fa-envelope"></i> abhayindwar7@gmail.com</a>
+                    <a href="tel:+918279343179"><i class="fas fa-phone"></i> +91-82793-43179</a>
+                    <span><i class="fas fa-map-marker-alt"></i> Ghaziabad / Bareilly, UP, India</span>
+                </div>
+                <div class="contact-socials">
+                    <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/abhayindwar7" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:abhayindwar7@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="contact-right">
+                <form id="contactForm">
+                    <div class="field"><input type="text" placeholder="Your Name" required></div>
+                    <div class="field"><input type="email" placeholder="Your Email" required></div>
+                    <div class="field"><input type="text" placeholder="Subject"></div>
+                    <div class="field"><textarea rows="5" placeholder="Your Message" required></textarea></div>
+                    <button type="submit" class="btn-green full"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Experience Timeline -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">My Journey</span>
-                <h2 class="section-title">Experience</h2>
-            </div>
-            <div class="timeline">
-                <!-- Unfluke -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-badge current">Current</div>
-                        <h3>App Developer Intern</h3>
-                        <h4>Unfluke</h4>
-                        <span class="timeline-date">Dec 2025 – Present</span>
-                        <p>
-                            Developing cross-platform mobile applications with React Native, implementing GraphQL APIs and optimizing database interactions. Reduced server response time by 30%.
-                        </p>
-                        <ul>
-                            <li>Implemented state management solutions with Redux</li>
-                            <li>Optimized app responsiveness and data flow</li>
-                            <li>Collaborated with product and design teams</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- TrackMatee -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-badge winner">🏆 SIH Winner</div>
-                        <h3>App Developer & Team Lead</h3>
-                        <h4>TrackMatee - Smart India Hackathon</h4>
-                        <span class="timeline-date">Sep 2025 – Dec 2025</span>
-                        <p>
-                            Led team of 5 developers to win national-level hackathon. Built mobility analytics platform using Flutter and Firebase.
-                        </p>
-                        <ul>
-                            <li>40% accuracy improvement in trip detection</li>
-                            <li>35% battery consumption reduction</li>
-                            <li>99.9% data integrity with offline-first architecture</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Trading App -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Frontend Application Developer</h3>
-                        <h4>Trading Application</h4>
-                        <span class="timeline-date">Jun 2025 – Jul 2025</span>
-                        <p>
-                            Architected real-time commodity trading platform serving 500+ users with instant order execution.
-                        </p>
-                        <ul>
-                            <li>40% reduction in transaction processing time</li>
-                            <li>Integrated WebSocket for live market data</li>
-                            <li>25% increase in user engagement</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- GSSoC -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Open Source Contributor</h3>
-                        <h4>GirlScript Summer of Code</h4>
-                        <span class="timeline-date">May 2025 – Dec 2025</span>
-                        <p>
-                            Contributed to multiple open-source projects, fixing bugs and optimizing code performance.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Get In Touch</span>
-                <h2 class="section-title">Let's Work Together</h2>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's build something amazing!</h3>
-                    <p>
-                        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <a href="mailto:abhayindwar7@gmail.com">abhayindwar7@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <a href="tel:+918279343179">+91-82793-43179</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Bareilly, Uttar Pradesh, India</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links-footer">
-                        <a href="https://github.com/abhayindwar" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/abhayindwar7" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:abhayindwar7@gmail.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2026 Abhaydeep Indwar. Built with 💜</p>
-                <a href="#home" class="back-to-top">
-                    <i class="fas fa-arrow-up"></i>
-                </a>
-            </div>
-        </div>
+        <p>©2026 Abhaydeep Indwar. Built with 💚</p>
+        <a href="#home" class="back-top"><i class="fas fa-arrow-up"></i></a>
     </footer>
 
     <script src="script.js"></script>
