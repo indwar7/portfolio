@@ -144,6 +144,81 @@ em { font-style: italic; }
     width: 100%;
     padding: 140px 0 80px;
 }
+/* ---- NAME + GLASS REFLECTOR ---- */
+.hero-name-wrap {
+    margin-bottom: 36px;
+    position: relative;
+}
+
+.hero-display-name {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: clamp(38px, 6.5vw, 78px);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.glass-floor {
+    position: relative;
+    width: 72%;
+    height: 52px;
+    margin-top: 1px;
+    overflow: hidden;
+    transform: perspective(360px) rotateX(52deg);
+    transform-origin: top center;
+    border-radius: 0 0 6px 6px;
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.14) 0%,
+        rgba(255,255,255,0.04) 60%,
+        transparent 100%
+    );
+    border-top: 1px solid rgba(255,255,255,0.28);
+}
+
+/* sweeping light beam */
+.glass-shine {
+    position: absolute;
+    top: 0; left: -180%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 15%,
+        rgba(180,220,255,0.18) 35%,
+        rgba(255,255,255,0.45) 50%,
+        rgba(220,180,255,0.18) 65%,
+        transparent 85%
+    );
+    animation: glassBeam 3.6s cubic-bezier(0.4,0,0.6,1) infinite;
+}
+@keyframes glassBeam {
+    0%   { left: -180%; opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { left: 220%;  opacity: 0; }
+}
+
+/* subtle iridescent ripple */
+.glass-shimmer {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent                    0px,
+        rgba(255,255,255,0.03)         2px,
+        transparent                    4px
+    );
+    animation: shimmerDrift 8s linear infinite;
+    background-size: 200% 100%;
+}
+@keyframes shimmerDrift {
+    0%   { background-position: 0 0; }
+    100% { background-position: 200% 0; }
+}
+
 .hero-kicker {
     font-size: 13px;
     font-weight: 500;
