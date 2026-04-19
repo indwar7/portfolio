@@ -3,342 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhaydeep Indwar | Mobile App Developer</title>
+    <title>Abhaydeep Indwar — Content Writer</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- NAV -->
-    <nav class="nav">
-        <div class="nav-logo">AI</div>
-        <div class="nav-links" id="navLinks">
+    <header class="nav">
+        <div class="nav-name">Abhaydeep Indwar</div>
+        <nav class="nav-links" id="navLinks">
             <a href="#about">About</a>
-            <a href="#projects">Projects</a>
+            <a href="#writing">Writing</a>
             <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
-        </div>
-        <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
-    </nav>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+    </header>
 
     <!-- HERO -->
-    <section id="home" class="hero">
-        <div class="hero-bg-text" aria-hidden="true">ABHAYDEEP</div>
-
+    <section class="hero">
         <div class="hero-inner">
-            <div class="hero-left">
-                <p class="hero-tag">Hey<span class="wave">👋</span>, I'm a Mobile App Developer</p>
-                <h1 class="hero-name">
-                    <span>ABHAYDEEP</span>
-                    <span class="green">INDWAR</span>
-                </h1>
-                <p class="hero-bio">
-                    I build fast, scalable, and user-friendly mobile apps using Flutter &amp; React Native. CS Engineer @ AKGEC (Data Science) · Intern @ Unfluke · <strong>SIH 2025 National Winner</strong>.
-                </p>
-                <div class="hero-meta">
-                    <span><i class="fas fa-map-marker-alt"></i> Ghaziabad / Bareilly, India</span>
-                    <span><i class="fas fa-trophy"></i> SIH 2025 National Winner</span>
-                    <span><i class="fas fa-graduation-cap"></i> 8.0 CGPA @ AKGEC</span>
-                </div>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn-green">View Projects</a>
-                    <a href="mailto:abhayindwar7@gmail.com" class="btn-outline">Hire Me</a>
-                </div>
-                <div class="hero-socials">
-                    <a href="https://github.com/indwar7" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/abhayindwar7" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:abhayindwar7@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="tel:+918279343179" title="Phone"><i class="fas fa-phone"></i></a>
-                </div>
-            </div>
-
-            <div class="hero-right">
-                <div class="photo-frame">
-                    <img src="images/profile.jpeg" alt="Abhaydeep Indwar" class="profile-photo">
-                    <div class="photo-border"></div>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-box">
-                        <span class="stat-n">2K+</span>
-                        <span class="stat-l">Users</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-n">50K+</span>
-                        <span class="stat-l">Daily Trips</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-n">40%</span>
-                        <span class="stat-l">Perf Boost</span>
-                    </div>
-                </div>
+            <p class="hero-kicker">Content Writer · Finance &amp; Tech</p>
+            <h1 class="hero-title">Words that<br><em>move people</em><br>to act.</h1>
+            <p class="hero-sub">I write clear, research-backed content on personal finance, investing, and technology — built for readers who want signal, not noise.</p>
+            <div class="hero-cta">
+                <a href="#writing" class="btn-primary">Read My Work</a>
+                <a href="mailto:abhayindwar7@gmail.com" class="btn-ghost">Get In Touch</a>
             </div>
         </div>
-
-        <div class="scroll-hint">
-            <span class="scroll-line"></span>
-            <span>SCROLL</span>
-        </div>
+        <div class="hero-rule"></div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section about">
-        <div class="section-label">/ ABOUT</div>
-        <div class="about-grid">
-            <div class="about-heading">
-                <h2>Creating,<br>Exploring &amp;<br>Enjoying<br>Every Single Day.</h2>
-            </div>
-            <div class="about-body">
-                <p>I'm a Computer Science student at <strong>AKGEC, Ghaziabad</strong> specialising in Data Science (graduating May 2027). I led a team of 5 to win <strong>Smart India Hackathon 2025</strong> at the national level — building TrackMatee for India's Ministry of Road Transport &amp; Highways.</p>
-                <p>Currently interning at <strong>Unfluke, Noida</strong>, shipping production React Native apps daily. I've built everything from real-time AR try-on platforms to waste management ecosystems with Go backends, Redis leaderboards, and RazorpayX payouts.</p>
-                <p>IBM Certified in Project Management &amp; Data Science. 2+ apps live on Google Play. Virtual internships at Tata, Goldman Sachs, and Accenture.</p>
-                <div class="about-chips">
-                    <span>Flutter</span><span>React Native</span><span>Firebase</span>
-                    <span>Go</span><span>PostgreSQL</span><span>Redis</span>
-                    <span>Python</span><span>TensorFlow</span><span>Docker</span>
+        <div class="section-grid">
+            <div class="section-label">About</div>
+            <div class="section-body">
+                <p class="about-lead">I'm Abhaydeep — a CS student at AKGEC (Data Science) with a sharp eye for making complex ideas simple.</p>
+                <p>My technical background in data science and mobile development gives me an unfair advantage as a writer: I understand the products I write about. Whether it's breaking down a mutual fund strategy or explaining how an app works to a first-time user, I translate complexity into clarity.</p>
+                <p>I've led engineering teams, shipped production apps, and won Smart India Hackathon 2025 — all of which taught me that the hardest part of any technical project is communicating it well.</p>
+                <div class="about-facts">
+                    <div class="fact"><span class="fact-n">8.0</span><span class="fact-l">CGPA @ AKGEC</span></div>
+                    <div class="fact"><span class="fact-n">SIH</span><span class="fact-l">2025 National Winner</span></div>
+                    <div class="fact"><span class="fact-n">IBM</span><span class="fact-l">Certified</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section projects">
-        <div class="section-label">/ PROJECTS</div>
-        <div class="section-title-row">
-            <h2>A SHOWCASE OF MY<br>LATEST PROJECTS</h2>
-        </div>
+    <hr class="divider">
 
-        <div class="projects-grid">
+    <!-- WRITING PORTFOLIO -->
+    <section id="writing" class="section writing">
+        <div class="section-grid">
+            <div class="section-label">Writing</div>
+            <div class="section-body">
+                <p class="section-intro">Featured articles on finance, investing, and technology.</p>
 
-            <!-- Lucy -->
-            <div class="proj-card featured">
-                <div class="proj-badge">🔥 Latest · Mar 2026</div>
-                <div class="proj-img-wrap">
-                    <div class="proj-placeholder ar">
-                        <i class="fas fa-camera"></i>
-                        <span>AR Try-On</span>
-                    </div>
-                </div>
-                <div class="proj-info">
-                    <h3>Lucy – AR Virtual Try-On</h3>
-                    <p>Real-time AR garment try-on app with live Camera2 API feed, on-device ML inference tracking <strong>33 body landmarks</strong>, and AI-powered virtual try-on using diffusion models (IDM-VTON).</p>
-                    <div class="proj-stats-row">
-                        <span><i class="fas fa-tachometer-alt"></i> 15–30 FPS</span>
-                        <span><i class="fas fa-brain"></i> 33 Body Landmarks</span>
-                        <span><i class="fas fa-magic"></i> IDM-VTON Diffusion</span>
-                    </div>
-                    <div class="proj-tags">
-                        <span>Flutter</span><span>Camera2 API</span><span>ML Kit</span><span>TFLite</span><span>ARKit</span><span>Python</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    </div>
+                <div class="articles">
+
+                    <article class="article featured">
+                        <div class="article-meta">
+                            <span class="article-tag">Personal Finance</span>
+                            <span class="article-date">Apr 2026</span>
+                        </div>
+                        <h2 class="article-title"><a href="#">Why Most Indians Invest in FDs — And Why That's Slowly Changing</a></h2>
+                        <p class="article-excerpt">Fixed deposits have been India's comfort food for decades. But with real returns turning negative, a new generation is quietly shifting toward mutual funds, SIPs, and index investing. Here's what's driving the change.</p>
+                        <a href="#" class="article-read">Read Article →</a>
+                    </article>
+
+                    <article class="article">
+                        <div class="article-meta">
+                            <span class="article-tag">Investing</span>
+                            <span class="article-date">Mar 2026</span>
+                        </div>
+                        <h2 class="article-title"><a href="#">SIP vs Lump Sum: A Data-Driven Look at What Actually Works</a></h2>
+                        <p class="article-excerpt">The SIP-vs-lump-sum debate fills personal finance forums. I ran the numbers across 10 years of Nifty 50 data to find out which approach actually delivered better returns — and when each makes sense.</p>
+                        <a href="#" class="article-read">Read Article →</a>
+                    </article>
+
+                    <article class="article">
+                        <div class="article-meta">
+                            <span class="article-tag">Technology</span>
+                            <span class="article-date">Feb 2026</span>
+                        </div>
+                        <h2 class="article-title"><a href="#">How Fintech Apps Are Rewiring How Gen Z Thinks About Money</a></h2>
+                        <p class="article-excerpt">Gamified investing, round-up savings, and one-tap SIPs — fintech UX isn't just convenient, it's behavioural. I explore how app design shapes financial decisions for a generation that grew up on dopamine loops.</p>
+                        <a href="#" class="article-read">Read Article →</a>
+                    </article>
+
+                    <article class="article">
+                        <div class="article-meta">
+                            <span class="article-tag">Explainer</span>
+                            <span class="article-date">Jan 2026</span>
+                        </div>
+                        <h2 class="article-title"><a href="#">Expense Ratio, Exit Load, NAV — A Jargon-Free Guide to Mutual Funds</a></h2>
+                        <p class="article-excerpt">Most first-time investors bounce off mutual fund jargon before they ever invest a rupee. This guide strips every term to its plain-English meaning — no finance degree required.</p>
+                        <a href="#" class="article-read">Read Article →</a>
+                    </article>
+
                 </div>
             </div>
-
-            <!-- TrackMatee -->
-            <div class="proj-card">
-                <div class="proj-badge">🏆 SIH 2025 Winner</div>
-                <div class="proj-img-wrap">
-                    <img src="images/tradinngg.jpeg" alt="TrackMatee" onerror="this.style.display='none'">
-                    <div class="proj-placeholder"><i class="fas fa-map-marked-alt"></i></div>
-                </div>
-                <div class="proj-info">
-                    <h3>TrackMatee</h3>
-                    <p>National mobility analytics platform for MoRTH across 50+ cities. Offline-first GPS trip detection processing 50K+ daily trips with zero downtime.</p>
-                    <div class="proj-stats-row">
-                        <span><i class="fas fa-users"></i> 2K+ Users</span>
-                        <span><i class="fas fa-chart-line"></i> 40% Accuracy ↑</span>
-                        <span><i class="fas fa-battery-three-quarters"></i> 35% Battery ↓</span>
-                    </div>
-                    <div class="proj-tags">
-                        <span>Flutter</span><span>Firebase</span><span>Google Maps</span><span>SQLite</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SafaiPay -->
-            <div class="proj-card">
-                <div class="proj-img-wrap">
-                    <div class="proj-placeholder"><i class="fas fa-recycle"></i></div>
-                </div>
-                <div class="proj-info">
-                    <h3>SafaiPay</h3>
-                    <p>End-to-end waste management &amp; rewards platform. Go backend with 28 REST endpoints, Redis leaderboards, RazorpayX payouts, and Cloudflare R2 image storage.</p>
-                    <div class="proj-stats-row">
-                        <span><i class="fas fa-server"></i> 28 Endpoints</span>
-                        <span><i class="fas fa-medal"></i> 15 Badges</span>
-                    </div>
-                    <div class="proj-tags">
-                        <span>Flutter</span><span>Go</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Trading App -->
-            <div class="proj-card">
-                <div class="proj-img-wrap">
-                    <img src="images/trading.jpeg" alt="Peanut Trading App" onerror="this.style.display='none'">
-                    <div class="proj-placeholder"><i class="fas fa-chart-line"></i></div>
-                </div>
-                <div class="proj-info">
-                    <h3>Peanut Trading App</h3>
-                    <p>Live commodity trading platform with WebSocket-driven real-time price feeds. 500+ concurrent users, 2,000+ daily transactions, 40% faster Firestore processing.</p>
-                    <div class="proj-stats-row">
-                        <span><i class="fas fa-users"></i> 500+ Concurrent</span>
-                        <span><i class="fas fa-bolt"></i> 2K+ Daily Txns</span>
-                    </div>
-                    <div class="proj-tags">
-                        <span>Flutter</span><span>WebSocket</span><span>Firebase</span><span>SQLite</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
+
+    <hr class="divider">
 
     <!-- SKILLS -->
     <section id="skills" class="section skills">
-        <div class="section-label">/ SKILLS</div>
-        <div class="skills-bg-text" aria-hidden="true">SKILLS</div>
-        <div class="skills-inner">
-            <h2>TECH I<br><span class="green">MASTER</span></h2>
-            <div class="skills-cols">
-                <div class="skills-col">
-                    <h4>Mobile</h4>
-                    <div class="skill-row"><span>Flutter</span><div class="bar"><div class="fill" style="--w:95%"></div></div><span class="pct">95%</span></div>
-                    <div class="skill-row"><span>React Native</span><div class="bar"><div class="fill" style="--w:88%"></div></div><span class="pct">88%</span></div>
-                    <div class="skill-row"><span>Kotlin / Java</span><div class="bar"><div class="fill" style="--w:80%"></div></div><span class="pct">80%</span></div>
-                    <div class="skill-row"><span>State Mgmt (Bloc/Redux)</span><div class="bar"><div class="fill" style="--w:90%"></div></div><span class="pct">90%</span></div>
-                </div>
-                <div class="skills-col">
-                    <h4>Backend & Cloud</h4>
-                    <div class="skill-row"><span>Firebase</span><div class="bar"><div class="fill" style="--w:92%"></div></div><span class="pct">92%</span></div>
-                    <div class="skill-row"><span>Go (Gin)</span><div class="bar"><div class="fill" style="--w:82%"></div></div><span class="pct">82%</span></div>
-                    <div class="skill-row"><span>PostgreSQL / Redis</span><div class="bar"><div class="fill" style="--w:80%"></div></div><span class="pct">80%</span></div>
-                    <div class="skill-row"><span>REST API / WebSocket</span><div class="bar"><div class="fill" style="--w:92%"></div></div><span class="pct">92%</span></div>
-                </div>
-                <div class="skills-col">
-                    <h4>Languages & AI</h4>
-                    <div class="skill-row"><span>Dart</span><div class="bar"><div class="fill" style="--w:95%"></div></div><span class="pct">95%</span></div>
-                    <div class="skill-row"><span>Python</span><div class="bar"><div class="fill" style="--w:85%"></div></div><span class="pct">85%</span></div>
-                    <div class="skill-row"><span>JavaScript</span><div class="bar"><div class="fill" style="--w:82%"></div></div><span class="pct">82%</span></div>
-                    <div class="skill-row"><span>TensorFlow / TFLite</span><div class="bar"><div class="fill" style="--w:78%"></div></div><span class="pct">78%</span></div>
-                </div>
-                <div class="skills-col tools">
-                    <h4>Tools & Infra</h4>
-                    <div class="tool-chips">
-                        <span>Git & GitHub</span>
-                        <span>Docker</span>
-                        <span>Android Studio</span>
-                        <span>Xcode</span>
-                        <span>Figma</span>
-                        <span>Postman</span>
-                        <span>VS Code</span>
-                        <span>Google Play Console</span>
-                        <span>CI/CD</span>
-                        <span>Railway</span>
+        <div class="section-grid">
+            <div class="section-label">Skills</div>
+            <div class="section-body">
+                <div class="skills-grid">
+                    <div class="skill-group">
+                        <h3>Writing</h3>
+                        <ul>
+                            <li>Long-form &amp; explainer articles</li>
+                            <li>SEO content &amp; blog writing</li>
+                            <li>Personal finance &amp; investing</li>
+                            <li>Technical writing &amp; documentation</li>
+                            <li>Social media copy</li>
+                            <li>Research &amp; fact-checking</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Tools</h3>
+                        <ul>
+                            <li>Notion &amp; Google Docs</li>
+                            <li>Ahrefs / SEMrush basics</li>
+                            <li>Grammarly &amp; Hemingway App</li>
+                            <li>WordPress &amp; Medium</li>
+                            <li>Canva (visual support)</li>
+                            <li>ChatGPT (research assist)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Technical Edge</h3>
+                        <ul>
+                            <li>Data Science (Python, SQL)</li>
+                            <li>Mobile app development</li>
+                            <li>Product &amp; UX understanding</li>
+                            <li>Financial data analysis</li>
+                            <li>GitHub &amp; version control</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section experience">
-        <div class="section-label">/ EXPERIENCE</div>
-        <h2 class="exp-heading">MY <span class="green">JOURNEY</span></h2>
-        <div class="timeline">
+    <hr class="divider">
 
-            <div class="tl-item">
-                <div class="tl-year">Now</div>
-                <div class="tl-dot green"></div>
-                <div class="tl-content">
-                    <span class="tl-badge current">Current</span>
-                    <h3>App Developer Intern</h3>
-                    <h4>Unfluke · Noida, India · Dec 2025 – Present</h4>
-                    <p>Built and maintained cross-platform production apps with React Native serving 100+ DOMs. Integrated RESTful APIs reducing server response time by 30%. Implemented Redux state management improving page load times by 40%.</p>
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+        <div class="section-grid">
+            <div class="section-label">Projects</div>
+            <div class="section-body">
+                <p class="section-intro">Technical projects that inform my writing — I've built what I write about.</p>
+                <div class="proj-list">
+
+                    <div class="proj-item">
+                        <div class="proj-top">
+                            <h3>TrackMatee</h3>
+                            <span class="proj-tag">🏆 SIH 2025 Winner</span>
+                        </div>
+                        <p>National GPS mobility analytics platform for India's MoRTH. Led a 5-person team, shipped across 50+ cities, 2K+ users, 50K+ daily trips. Taught me how to communicate complex technical systems to non-technical stakeholders.</p>
+                        <div class="proj-chips"><span>Flutter</span><span>Firebase</span><span>GPS API</span></div>
+                    </div>
+
+                    <div class="proj-item">
+                        <div class="proj-top">
+                            <h3>SafaiPay</h3>
+                            <span class="proj-tag">Full-Stack</span>
+                        </div>
+                        <p>Waste management &amp; rewards platform with gamified points, Redis leaderboards, and RazorpayX wallet payouts. Writing the product narrative for this taught me how to frame civic-tech stories compellingly.</p>
+                        <div class="proj-chips"><span>Flutter</span><span>Go</span><span>PostgreSQL</span><span>Docker</span></div>
+                    </div>
+
+                    <div class="proj-item">
+                        <div class="proj-top">
+                            <h3>Lucy – AR Try-On</h3>
+                            <span class="proj-tag">AI / AR</span>
+                        </div>
+                        <p>Real-time AR garment try-on using on-device ML, 33 body landmark tracking, and IDM-VTON diffusion models. Deepened my ability to explain AI/ML concepts to general audiences without losing accuracy.</p>
+                        <div class="proj-chips"><span>Flutter</span><span>TFLite</span><span>ARKit</span><span>Python</span></div>
+                    </div>
+
                 </div>
             </div>
-
-            <div class="tl-item">
-                <div class="tl-year">2026</div>
-                <div class="tl-dot"></div>
-                <div class="tl-content">
-                    <h3>Full-Stack Mobile App Developer</h3>
-                    <h4>SafaiPay – Waste Management & Rewards Platform · Jan 2026 – Mar 2026</h4>
-                    <p>Built production Go backend (28 REST endpoints), PostgreSQL, Redis cache, and Flutter frontend (10+ screens). Firebase OTP + JWT auth, 15 gamified badges, Redis leaderboards, wallet payouts via RazorpayX. Deployed via Docker on Railway.</p>
-                </div>
-            </div>
-
-            <div class="tl-item">
-                <div class="tl-year">2025</div>
-                <div class="tl-dot green"></div>
-                <div class="tl-content">
-                    <span class="tl-badge winner">🏆 SIH 2025 National Winner</span>
-                    <h3>App Developer & Team Lead</h3>
-                    <h4>TrackMatee · Smart India Hackathon · Sep 2025 – Dec 2025</h4>
-                    <p>Led 5 developers to build national mobility analytics platform (Flutter + Firebase) across 50+ cities serving 2K+ users. 40% accuracy gain, 99.9% data integrity, 35% battery reduction. Processed 50,000+ trips daily.</p>
-                </div>
-            </div>
-
-            <div class="tl-item">
-                <div class="tl-year">2025</div>
-                <div class="tl-dot"></div>
-                <div class="tl-content">
-                    <h3>Frontend App Developer</h3>
-                    <h4>Peanut Trading App · Jun 2025 – Jul 2025</h4>
-                    <p>Real-time commodity trading platform with WebSocket price feeds and Firebase order management. 500+ concurrent users, 2,000+ daily transactions, 40% faster Firestore processing with SQLite offline caching.</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
+    <hr class="divider">
+
     <!-- CONTACT -->
     <section id="contact" class="section contact">
-        <div class="section-label">/ CONTACT</div>
-        <div class="contact-bg-text" aria-hidden="true">CONTACT</div>
         <div class="contact-inner">
-            <div class="contact-left">
-                <h2>LET'S<br><span class="green">WORK</span><br>TOGETHER.</h2>
-                <div class="contact-details">
-                    <a href="mailto:abhayindwar7@gmail.com"><i class="fas fa-envelope"></i> abhayindwar7@gmail.com</a>
-                    <a href="tel:+918279343179"><i class="fas fa-phone"></i> +91-82793-43179</a>
-                    <span><i class="fas fa-map-marker-alt"></i> Ghaziabad / Bareilly, UP, India</span>
-                </div>
-                <div class="contact-socials">
-                    <a href="https://github.com/indwar7" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/abhayindwar7" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:abhayindwar7@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="contact-right">
-                <form id="contactForm">
-                    <div class="field"><input type="text" placeholder="Your Name" required></div>
-                    <div class="field"><input type="email" placeholder="Your Email" required></div>
-                    <div class="field"><input type="text" placeholder="Subject"></div>
-                    <div class="field"><textarea rows="5" placeholder="Your Message" required></textarea></div>
-                    <button type="submit" class="btn-green full"><i class="fas fa-paper-plane"></i> Send Message</button>
-                </form>
+            <h2 class="contact-title">Let's work<br><em>together.</em></h2>
+            <p class="contact-sub">Open to content writing internships, freelance assignments, and collaborations. I respond within 24 hours.</p>
+            <div class="contact-links">
+                <a href="mailto:abhayindwar7@gmail.com">abhayindwar7@gmail.com</a>
+                <a href="https://linkedin.com/in/abhayindwar7" target="_blank">LinkedIn</a>
+                <a href="https://github.com/indwar7" target="_blank">GitHub</a>
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <p>©2026 Abhaydeep Indwar. Built with 💚</p>
-        <a href="#home" class="back-top"><i class="fas fa-arrow-up"></i></a>
+        <span>©2026 Abhaydeep Indwar</span>
+        <a href="#" class="footer-top">↑ Back to top</a>
     </footer>
 
     <script src="script.js"></script>
